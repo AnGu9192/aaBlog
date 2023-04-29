@@ -1,0 +1,285 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+
+}
+body{
+  background: url(../images/bg5.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+a{
+    text-decoration: none;
+    list-style-type: none;
+    color: black;
+}
+.navbar{
+    width: 100%;
+    height: 80px;
+
+}
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    gap:25px;
+    padding: 30px;
+    font-size: 30px;
+}
+li{
+    text-decoration: none;
+    color: white;
+
+}
+.btnLogin-popup{
+    widows: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+.btnLogin-popup a{
+    color:white;
+}
+
+.btnLogin-popup:hover{
+    background: #fff;
+    color:#375e63;
+
+}
+li a{
+    color: white;
+}
+ a:hover{
+    color:#375e63;
+}
+.active{
+    color:whitesmoke;
+}
+.container{
+    position: relative;
+    min-height: 100vh;
+    padding: 50px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-size: cover;
+    
+}
+.contactForm{
+    width: 40%;
+    padding: 30px;
+    background:transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    margin: 0 auto;
+}
+.registration_page{
+    display: flex;
+    gap: 20px;
+}
+.sign_page{
+    display: flex;
+    flex-direction: column;
+}
+
+.contactForm h2{
+    font-size: 30px;
+    color: black;
+    font-weight: 500;
+}
+.dont_acount{
+    margin-top: 10px;
+}
+
+.contactForm .inputBox{
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+}
+.contactForm .inputBox input{
+    width: 100%;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid #333;
+    outline: none;
+}
+.password-container{
+    width: 400px;
+    position: relative;
+  }
+  .password-container input[type="password"],
+  .password-container input[type="text"]{
+    width: 100%;
+    padding: 12px 36px 12px 12px;
+    box-sizing: border-box;
+  }
+  .fa-eye{
+    position: absolute;
+    top: 28%;
+    right: 4%;
+    cursor: pointer;
+    color: lightgray;
+  }
+.contactForm .inputBox span{
+    position: absolute;
+    left: 0;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    pointer-events: none;
+    transition: 0.5s;
+    color: #666;
+}
+.contactForm .inputBox input:focus ~ span,
+.contactForm .inputBox input:valid ~ span{
+    color: #92bbeb;
+    font-size: 16px;
+    transform: translateY(-25px);
+
+}
+
+.contactForm .inputBox input[type="submit"]{
+    width: 100%;
+    background: #0590d1;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+}
+.contactForm .inputBox input[type="submit"]:hover{
+    background: #4d7d94;
+}
+.radio__contant {
+    display: flex;
+    gap: 4px;
+    margin-top: 10px;
+}
+.radio__contant p,label{
+  color: white;
+}
+ .copyright{
+    display: flex;
+    gap:20px;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    font-size: 40px;
+}
+.footer {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+    margin-top: 200px;
+  }
+  
+  .socialMedia {
+    display: flex;
+    gap: 20px;
+    color: white;
+    margin: 30px;
+    cursor: pointer;
+ 
+  } 
+
+  .footer p {
+    color: white;
+    font-size: 20px;
+  }
+  
+.error{
+    color: red;
+}
+
+  @media only screen and (max-width: 600px) {
+    .footer svg {
+      font-size: 50px;
+    }
+  }
+.logOut{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.logOut p{
+    margin: 5px;
+}
+@media (max-width:991px){
+    .contactForm{
+        width: 100%;
+    }
+
+}
+
+@media (max-width:500px){
+
+    .contactForm h2{
+        font-size: 15px;
+       
+    }
+    .contactForm .inputBox span{
+    
+        font-size: 10px;
+
+    }
+    .radio__contant{
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+.hide{
+    display: none;
+}
+
+
+#preview img{
+    border-radius: 50%;
+    border:8px solid #DCDCDC;
+    width: 125px;
+    height: 125px;
+}
+.upload_submit input[type=submit]{
+    border: none;
+    outline: none;
+    height: 20px;
+    width: 60px;
+    background-color: aliceblue;
+    margin-left: 35px;
+    border-radius: 5px;
+}
+.edit_profile{
+    background-color: aliceblue;
+    padding: 2px;
+    text-align: center;
+    margin-left: 25px;
+    border-radius: 5px;
+
+
+} 

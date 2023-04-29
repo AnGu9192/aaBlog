@@ -56,3 +56,4 @@ function validateFirstname(){
     errorElement.innerText = 'Firstname is required and can`t be js';
   }
 }
+

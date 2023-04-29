@@ -1,4 +1,7 @@
-<?php include dirname(__DIR__) . "/config/constants.php"; ?>
+<?php
+session_start();
+$userId = $_SESSION["USER_ID"];
+include dirname(__DIR__) . "/config/constants.php"; ?>
 <!doctype html>
 <html lang="en">
 
@@ -9,7 +12,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Anna | Blog</title>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/style.css">
-
 </head>
 
 <body>

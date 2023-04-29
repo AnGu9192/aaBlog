@@ -8,7 +8,9 @@
 </div>
 </div>
 </main>
-<script src="<?php echo BASE_URL; ?>js/script.js"></script>
+
+<!--<script src="jquery" defer></script>-->
+<script src="<?php echo BASE_URL; ?>js/script.js" defer></script>
 
 </body>
 </html>

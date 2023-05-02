@@ -16,14 +16,8 @@ include "../layouts/header.php";
     <?php if (!$user['avatar']) {
          $src = BASE_URL . 'images/' . $user['gender'] . '.jpg';
 
-         if ($gender == "male") {
-            echo '<img src="../images/male.jpg" />';
-        }
-        else if ($gender == "female") {
-            echo '<img src="/female.jpg" />';
-        } 
-/*       $gender == "male" ? '<img src="../images/male.jpg" />' :   '<img src="../images/female.jpg" />'; 
- */       
+        $user['gender'] == "male" ? '<img src="../images/male.jpg" />' :   '<img src="../images/female.jpg" />'; 
+         
     } else {
         $src = UPLOADS . $user['avatar'];
     } ?>
@@ -32,11 +26,6 @@ include "../layouts/header.php";
             enctype="multipart/form-data">
             <input class="hide" type="file" name="avatar" onchange="getImagePreview(event)">
             <div id="preview">
-              <!--   if (file_exists('current_file_path')) {
-                <img src="<?php echo $src ?>" alt="" />
-                }else{
-                <img src="<?php echo $src ?>" alt="" />
-                } -->
                  <img width="100" src="<?php echo $src ?>" alt="">
             </div>
             <div class="upload_submit" style="display: none;" id="uploadSub">

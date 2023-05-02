@@ -63,9 +63,8 @@ firstname.addEventListener("blur", (e) => {
 
 }
 
-
- 
-/*  $(document).ready(function(){
+/* 
+  $(document).ready(function(){
  $('#email').bind('change', function() {
  
 ($('#email').val(), function(exists) {
@@ -74,10 +73,10 @@ firstname.addEventListener("blur", (e) => {
   });
 });
 })
-
-
  */
- $(document).ready(function(){
+
+
+/*  $(document).ready(function(){
 
   $('#email').blur(function(){
     var email = $(this).val();
@@ -97,5 +96,17 @@ firstname.addEventListener("blur", (e) => {
         });
       }
   });
-})  
- 
+})    
+ */
+
+function checkEmail(email){
+  $.ajax({
+   method:"POST",
+   url: "../actions/checkEmail.php",
+   data:{email:email},
+   success: function(data){
+     $('#email-error').html(data);
+   }
+   
+ });
+} 

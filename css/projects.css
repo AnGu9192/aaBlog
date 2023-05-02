@@ -1,13 +1,13 @@
 :root{
   --transition: all 0.7s ease;
-  --yellow: #f9d342;
+  --black: #1b180a;
   --dark: #7c7777;
 }
 .title{
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 20px;
-  color: var(--yellow);
+  color: var(--black);
   border-bottom: 5px solid var(--dark);
   width: 300px;
   margin: 15px 0;
@@ -41,7 +41,7 @@
 }
 .project-image img{
   transition: var(--transition);
-  height: 500px;
+  height: 300px;
 }
 .project-image:hover img{
   transform: scale(1.1);

@@ -1,6 +1,6 @@
 <?php
 include dirname(__DIR__) . "/config/constants.php"; 
-
+session_start();
 $userId = $_SESSION["USER_ID"];
 
 ?>

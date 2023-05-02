@@ -3,9 +3,9 @@ session_start();
 include "../layouts/header.php"; ?>
 <div class="container">
     <div class="contactForm">
-        <form action="<?php echo BASE_URL; ?>actions/editProfileAction.php" method="post" autocomplate="off">
+        <form action="<?php echo BASE_URL; ?>actions/insertDataAction.php" method="post" autocomplate="off">
             <div class='registration_page'>
-                <h2 class="signup">Update Page</h2>
+                <h2 class="signup">Insert Data</h2>
             </div>
 
             <div class="inputBox">
@@ -34,6 +34,13 @@ include "../layouts/header.php"; ?>
                 </p>
 
             </div>
+            <div class="inputBox">
+                <input type="password" name="password" id="password" class="password-container" value="<?= isset($_SESSION["old"]["password"])?$_SESSION["old"]["password"]:'' ?>">
+                <i class="fa fa-eye" id="eye"></i> 
+                <span>Password*</span>
+                <p class="error"><?= isset($_SESSION["errors"]["password"])?$_SESSION["errors"]["password"]:'' ?></p>
+
+            </div>
 
      
        <div class="inputBox">
@@ -53,7 +60,7 @@ include "../layouts/header.php"; ?>
 
             </div> 
             <div class="inputBox">
-                <input type="submit" value="Update" name="submit">
+                <input type="submit" value="Insert" name="submit">
             </div>
 
         </form>

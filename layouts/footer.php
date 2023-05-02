@@ -9,7 +9,7 @@
 </div>
 </main>
 
-<!--<script src="jquery" defer></script>-->
+<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
 <script src="<?php echo BASE_URL; ?>js/script.js" defer></script>
 
 </body>

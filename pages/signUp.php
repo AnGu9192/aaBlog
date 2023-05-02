@@ -17,13 +17,13 @@ include "../layouts/header.php"; ?>
             <div class="inputBox">
                 <input type="text" name="lastname" id="lastname" value="<?= isset($_SESSION["old"]["lastname"])?$_SESSION["old"]["lastname"]:'' ?>">
                 <span>Last Name *</span>
-                <p class="error"><?= isset($_SESSION["errors"]["lastname"])?$_SESSION["errors"]["lastname"]:'' ?></p>
+                <p class="error" id="lastname-error"><?= isset($_SESSION["errors"]["lastname"])?$_SESSION["errors"]["lastname"]:'' ?></p>
 
             </div>
             <div class="inputBox">
-                <input type="text" name="email" id="email"  value="<?= isset($_SESSION["old"]["email"])?$_SESSION["old"]["email"]:'' ?>">
+                <input type="email" name="email" id="email"  value="<?= isset($_SESSION["old"]["email"])?$_SESSION["old"]["email"]:'' ?>" >
                 <span>Email *</span>
-                <p class="error"><?= isset($_SESSION["errors"]["email"])?$_SESSION["errors"]["email"]:'' ?></p>
+                <p class="error" id="email-error"><?= isset($_SESSION["errors"]["email"])?$_SESSION["errors"]["email"]:''  ?></p>
 
             </div>
             <div class="inputBox">
@@ -36,7 +36,6 @@ include "../layouts/header.php"; ?>
             <div class="inputBox">
                 <input type="password" name="repeat_password" id="repeat_password" class="password-container" value="<?= isset($_SESSION["old"]["password"])?$_SESSION["old"]["password"]:'' ?>">
                 <i class="fa fa-eye" id="repeat-eye"></i> 
-
                 <span>Repeat password*</span>
                 <p class="error"><?= isset($_SESSION["errors"]["repeat_password"])?$_SESSION["errors"]["repeat_password"]:'' ?></p>
 

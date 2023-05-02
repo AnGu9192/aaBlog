@@ -14,7 +14,16 @@ include "../layouts/header.php";
 <div class="logOut">
     <h1>Welcome </h1>
     <?php if (!$user['avatar']) {
-        $src = BASE_URL . 'images/' . $user['gender'] . '.jpg';
+         $src = BASE_URL . 'images/' . $user['gender'] . '.jpg';
+
+         if ($gender == "male") {
+            echo '<img src="../images/male.jpg" />';
+        }
+        else if ($gender == "female") {
+            echo '<img src="/female.jpg" />';
+        } 
+/*       $gender == "male" ? '<img src="../images/male.jpg" />' :   '<img src="../images/female.jpg" />'; 
+ */       
     } else {
         $src = UPLOADS . $user['avatar'];
     } ?>
@@ -23,9 +32,14 @@ include "../layouts/header.php";
             enctype="multipart/form-data">
             <input class="hide" type="file" name="avatar" onchange="getImagePreview(event)">
             <div id="preview">
-                <img width="100" src="<?php echo $src ?>" alt="">
+              <!--   if (file_exists('current_file_path')) {
+                <img src="<?php echo $src ?>" alt="" />
+                }else{
+                <img src="<?php echo $src ?>" alt="" />
+                } -->
+                 <img width="100" src="<?php echo $src ?>" alt="">
             </div>
-            <div class="upload_submit">
+            <div class="upload_submit" style="display: none;" id="uploadSub">
                 <input type="submit" value="Upload" name="upload">
             </div>
         </form>
@@ -35,6 +49,9 @@ include "../layouts/header.php";
 
         <div>
             <a href="<?php echo BASE_URL; ?>pages/update.php" class="edit_profile">Edit Prrofile</a>
+        </div>
+        <div class="insert">
+            <a href="<?php echo BASE_URL; ?>pages/insert.php" class="insert_data">Insert Data</a>
         </div>
     </label>
     <p>

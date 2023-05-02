@@ -280,6 +280,15 @@ li a{
     text-align: center;
     margin-left: 25px;
     border-radius: 5px;
-
-
 } 
+.insert{
+    margin-top: 15px;
+
+}
+.insert_data{
+    background-color: aliceblue;
+    padding: 2px;
+    text-align: center;
+    margin-left: 25px;
+    border-radius: 5px;
+}

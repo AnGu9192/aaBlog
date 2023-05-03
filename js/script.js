@@ -32,57 +32,60 @@ function getImagePreview(event)
   newimg.width="100";
   imagediv.appendChild(newimg);
 }
+ $(document).ready(function(){
 
-const firstname = document.getElementById("firstname");
-const lastname = document.getElementById("lastname");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-const repeatPassword = document.getElementById("repeat_password");
-const errorElement = document.getElementById("firstname-error");
-const errorLastname = document.getElementById("lastname-error");
+   const firstname = document.getElementById("firstname");
+   const lastname = document.getElementById("lastname");
+   const email = document.getElementById("email");
+   const password = document.getElementById("password");
+   const repeatPassword = document.getElementById("repeat_password");
+   const errorElement = document.getElementById("firstname-error");
+   const errorLastname = document.getElementById("lastname-error");
 
-const form = document.getElementById("signup");
+   const form = document.getElementById("signup");
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  validateFirstname();
-});
+   form.addEventListener("submit", (e) => {
+     // e.preventDefault();
+     validateFirstname();
+     validateLastname()
+   });
 
-firstname.addEventListener("blur", (e) => {
-  validateFirstname();
-});
+   firstname.addEventListener("blur", (e) => {
+     validateFirstname();
+   });
 
- function validateFirstname(){
-  let msg = [];
-  if (firstname.value === "" || firstname.value === null) {
-    msg.push("Firstname is required and can`t be ");
-  }
-  if (msg.length > 0) {
-    errorElement.innerText = 'Firstname is required and can`t be js';
-  }
+   lastname.addEventListener("blur", (e) => {
+     validateLastname();
+   });
 
-}
+   function validateFirstname(){
+     let msg = [];
+     if (firstname.value === "" || firstname.value === null) {
+       msg.push("Firstname is required and can`t be ");
+     }
+     if (msg.length > 0) {
+       errorElement.innerText = 'Firstname is required and can`t be js';
+     }
 
-/* 
-  $(document).ready(function(){
- $('#email').bind('change', function() {
- 
-($('#email').val(), function(exists) {
-      if (exists)
-          $('#email-error').text('Email exists').show();
-  });
-});
-})
- */
+   }
+
+   function validateLastname(){
+     let msg = [];
+     if (lastname.value === "" || lastname.value === null) {
+       msg.push("Lastname is required and can`t be ");
+     }
+     if (msg.length > 0) {
+       errorLastname.innerText = 'Lastname is required and can`t be js';
+     }
+
+   }
 
 
-/*  $(document).ready(function(){
-
-  $('#email').blur(function(){
+   $('#email').blur(function(){
     var email = $(this).val();
     if(email == ""){
       $("#email-error").fadeOut();
-  
+
       }else{
         $.ajax({
           url:"../actions/checkEmail.php",
@@ -91,22 +94,11 @@ firstname.addEventListener("blur", (e) => {
             email:email
           },
           success: function(data){
-            $("#email-error").fadeIn().html(data);
+            let response = JSON.parse(data);
+            $("#email-error").fadeIn().html(response.message);
           }
         });
       }
   });
-})    
- */
+})
 
-function checkEmail(email){
-  $.ajax({
-   method:"POST",
-   url: "../actions/checkEmail.php",
-   data:{email:email},
-   success: function(data){
-     $('#email-error').html(data);
-   }
-   
- });
-} 

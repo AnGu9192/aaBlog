@@ -1,7 +1,8 @@
 <?php
+session_start();
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", 1);
-include "../config/connection.php";
+include "../config/functions.php";
 
 if (isset($_POST["firstname"]) && !empty($_POST["firstname"])) {
     $firstname = $_POST["firstname"];
@@ -91,9 +92,17 @@ if (isset($_POST["gender"]) && !empty($_POST["gender"])) {
 }
 if (!$_SESSION["errors"]) {
     $password = password_hash($password, PASSWORD_DEFAULT);
-    $query = "INSERT INTO `users` (`firstname`,`lastname`, `email`,`password`,`birthday`,`gender`)
-    VALUES ('$firstname', '$lastname','$email','$password','$birthday','$gender')";
-    $userRegistered = mysqli_query($connection, $query);
+    $data = [
+        'firstname' => $firstname,
+        'lastname' => $lastname,
+        'password' => $password,
+        'email' => $email,
+        'birthday' => $birthday,
+        'gender' => $gender,
+    ];
+
+    $userRegistered = insert('users',$data);
+
     if ($userRegistered) {
         header("Location: ../pages/signIn.php");
         die;

@@ -1,6 +1,17 @@
 <?php
-session_start();
-include "../layouts/header.php"; ?>
+include "../layouts/header.php";
+include dirname(__DIR__) . "/config/connection.php";
+
+$userId = $_SESSION["USER_ID"];
+if (!$userId) {
+    header("location:../pages/signIn.php");
+    die;
+}
+$query = "SELECT `firstname`,`lastname`, `avatar`,`gender`, `email`,`birthday` FROM users WHERE id=$userId LIMIT 1";
+$data = mysqli_query($connection, $query);
+$user = mysqli_fetch_assoc($data);
+
+?>
 <div class="container">
     <div class="contactForm">
         <form action="<?php echo BASE_URL; ?>actions/editProfileAction.php" method="post" autocomplate="off">
@@ -10,7 +21,7 @@ include "../layouts/header.php"; ?>
 
             <div class="inputBox">
                 <input type="text" name="firstname" id="firstname"
-                    value="<?= isset($_SESSION["old"]["firstname"]) ? $_SESSION["old"]["firstname"] : '' ?>">
+                    value="<?= $user['firstname'] ?>">
                 <span>First Name *</span>
                 <p class="error">
                     <?= isset($_SESSION["errors"]["firstname"]) ? $_SESSION["errors"]["firstname"] : '' ?>
@@ -63,6 +74,5 @@ include "../layouts/header.php"; ?>
 </div>
 
 <?php
-session_destroy();
 include "../layouts/footer.php";
 ?>

@@ -1,5 +1,9 @@
 <?php
-include "../config/connection.php";
+include dirname(__DIR__) . "/config/connection.php";
+include "../layouts/header.php";
+
+
+global $connection;
 $userId = $_SESSION["USER_ID"];
 if (!$userId) {
     header("location:../pages/signIn.php");
@@ -9,7 +13,6 @@ $query = "SELECT CONCAT(`firstname`,' ',`lastname`) as `fullname`, `avatar`,`gen
 $data = mysqli_query($connection, $query);
 $user = mysqli_fetch_assoc($data);
 // Select user with id
-include "../layouts/header.php";
 ?>
 <div class="logOut">
     <h1>Welcome </h1>
@@ -37,7 +40,7 @@ include "../layouts/header.php";
         </p>
 
         <div>
-            <a href="<?php echo BASE_URL; ?>pages/update.php" class="edit_profile">Edit Prrofile</a>
+            <a href="<?php echo BASE_URL; ?>pages/updateProfile.php" class="edit_profile">Edit Profile</a>
         </div>
         <div class="insert">
             <a href="<?php echo BASE_URL; ?>pages/insert.php" class="insert_data">Insert Data</a>

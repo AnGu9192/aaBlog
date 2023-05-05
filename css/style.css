@@ -115,7 +115,7 @@ li a{
 }
 .contactForm .inputBox input{
     width: 100%;
-    padding: 5px 0;
+    padding: 5px;
     font-size: 16px;
     margin: 10px 0;
     border: none;
@@ -176,6 +176,54 @@ li a{
 }
 .radio__contant p,label{
   color: white;
+}
+
+.hide{
+    display: none;
+}
+
+
+#preview img{
+    border-radius: 50%;
+    border:8px solid #DCDCDC;
+    width: 125px;
+    height: 125px;
+    margin:0 25%;
+}
+.upload_submit input[type=submit]{
+    border: none;
+    outline: none;
+    height: 20px;
+    width: 60px;
+    background-color: aliceblue;
+    margin-left: 35px;
+    border-radius: 5px;
+}
+.edit_profile{
+    background-color: aliceblue;
+    padding: 2px;
+    text-align: center;
+    margin-left: 25px;
+    border-radius: 5px;
+} 
+.insert{
+    margin-top: 15px;
+
+}
+.insert_data{
+    background-color: aliceblue;
+    padding: 2px;
+    text-align: center;
+    margin-left: 25px;
+    border-radius: 5px;
+}
+
+.actions{
+    display: flex;
+}
+
+.project_description{
+    padding: 6px;
 }
  .copyright{
     display: flex;
@@ -254,41 +302,3 @@ li a{
 
 }
 
-.hide{
-    display: none;
-}
-
-
-#preview img{
-    border-radius: 50%;
-    border:8px solid #DCDCDC;
-    width: 125px;
-    height: 125px;
-}
-.upload_submit input[type=submit]{
-    border: none;
-    outline: none;
-    height: 20px;
-    width: 60px;
-    background-color: aliceblue;
-    margin-left: 35px;
-    border-radius: 5px;
-}
-.edit_profile{
-    background-color: aliceblue;
-    padding: 2px;
-    text-align: center;
-    margin-left: 25px;
-    border-radius: 5px;
-} 
-.insert{
-    margin-top: 15px;
-
-}
-.insert_data{
-    background-color: aliceblue;
-    padding: 2px;
-    text-align: center;
-    margin-left: 25px;
-    border-radius: 5px;
-}

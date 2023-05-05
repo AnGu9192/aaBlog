@@ -1,11 +1,12 @@
 <?php
+session_start();
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", 1);
-include "../config/connection.php";
+include "../config/functions.php";
 
 $userId = $_SESSION["USER_ID"];
 if (!$userId) {
-    header("location:../pages/update.php");
+    header("location:../pages/signIn.php");
     die;
 }
 
@@ -18,15 +19,24 @@ if (isset($_POST['submit'])) {
     $birthday = $_POST['birthday'];
     $gender = $_POST['gender'];
 
+    $data = [
+        'firstname' => $firstname,
+        'lastname' => $lastname,
+        'email' => $email,
+        'birthday' => $birthday,
+        'gender' => $gender,
+      ];
 
-    $sql = "UPDATE users SET  firstname = '$firstname',lastname = '$lastname', email='$email',birthday = '$birthday',  gender = '$gender' WHERE  id=$userId";
+     $sql = update('users', $data, $userId);
+/*     $sql = "UPDATE users SET  firstname = '$firstname',lastname = '$lastname', email='$email',birthday = '$birthday',  gender = '$gender' WHERE  id=$userId";
 
     if (mysqli_query($connection, $sql)) {
-        echo "Record updated successfully";
+        header("location:../pages/profile.php");
     } else {
         echo "Error updating record: " . mysqli_error($connection);
-    }
+    } */
 
-    mysqli_close($connection);
-
+/*     mysqli_close($connection);
+ */
 }
+header("Location: ../pages/profile.php");die; 

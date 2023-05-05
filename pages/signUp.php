@@ -34,7 +34,7 @@ include "../layouts/header.php"; ?>
 
             </div>
             <div class="inputBox">
-                <input type="password" name="repeat_password" id="repeat_password" class="password-container" value="<?= isset($_SESSION["old"]["password"])?$_SESSION["old"]["password"]:'' ?>">
+                <input type="password" name="repeat_password" id="repeat_password" class="password-container" value="<?= isset($_SESSION["old"]["repeat_password"])?$_SESSION["old"]["repeat_password"]:'' ?>">
                 <i class="fa fa-eye" id="repeat-eye"></i> 
                 <span>Repeat password*</span>
                 <p class="error"><?= isset($_SESSION["errors"]["repeat_password"])?$_SESSION["errors"]["repeat_password"]:'' ?></p>
@@ -43,7 +43,7 @@ include "../layouts/header.php"; ?>
             <div class="inputBox">
                     <input id="date" type="date" name="birthday" id="birthday" value="<?= isset($_SESSION["old"]["birthday"])?$_SESSION["old"]["birthday"]:'' ?>">
                     <span>Birthday*</span>
-                    <p class="error"><?= isset($_SESSION["errors"]["birthday"])?$_SESSION["errors"]["birthday"]:'' ?></p>
+                    <p class="error" id="birthday-error"><?= isset($_SESSION["errors"]["birthday"])?$_SESSION["errors"]["birthday"]:'' ?></p>
                 
                 </div>
             <div class="radio__contant" id="gen" value="<?= isset($_SESSION["old"]["gender"])?$_SESSION["old"]["gender"]:'' ?>">

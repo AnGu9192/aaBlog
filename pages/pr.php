@@ -3,6 +3,7 @@ include dirname(__DIR__) . "/config/connection.php";
 include "../layouts/header.php";
 
 
+global $connection;
 $userId = $_SESSION["USER_ID"];
 if (!$userId) {
     header("location:../pages/signIn.php");

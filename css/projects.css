@@ -17,7 +17,6 @@
   margin: 0 auto!important;
 }
 
-/* start project */
 
 .projects{
   margin: 40px 0;
@@ -53,13 +52,78 @@ img{
 @media (min-width: 900px){
   .projects-container{
       display: flex;
-      flex-wrap: wrap;
   }
   .project{
-      flex: 0 0 calc(50% - 20px);
+      flex: 0 0 calc(35% - 10px);
       margin: 5px;
   }
+}
+.btnCreateProject{
+  widows: 130px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #fff;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  color: #fff;
+  font-weight: 500;
+  margin-left: 40px;
+  transition: .5s;
+}
+.btnCreateProject a{
+  color:white;
+}
 
-
+.btnCreateProject:hover{
+  background: #fff;
+  color:#375e63;
 
 }
+
+
+.pagination {
+  margin-left: 28px;
+  margin-top: 21px;
+  display: flex;
+  padding: 32px;
+  border-radius: 1px solid;
+}
+
+.page {
+  margin-left: -60px;
+  margin-top: 2px;
+
+}
+
+.img-slide-arrow{
+  display: flex;
+  margin-left: 49px;
+}
+.img-slide-arrow1 {
+  padding-left: 32px;
+}
+
+.img-slide-arrow2 {
+  padding-left: 32px;
+}
+
+
+.project .pagination .prev.disabled,
+.project .pagination .next.disabled {
+  border-color: rgb(53, 50, 50);;
+  color: rgb(53, 50, 50);
+  pointer-events: none;
+}
+
+.project .projectSlide.hide {
+  display: none;
+}
+
+.project .projectSlide.show {
+  display: block;
+  animation: show .5s ease;
+}
+
+

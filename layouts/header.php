@@ -1,8 +1,10 @@
 <?php
-include dirname(__DIR__) . "/config/constants.php"; 
 session_start();
-$userId = $_SESSION["USER_ID"];
+ini_set("error_reporting",E_ALL);
+ini_set("display_errors",1);
+include dirname(__DIR__) . "/config/constants.php";
 
+$userId = @$_SESSION["USER_ID"];
 ?>
 
 <!doctype html>
@@ -30,6 +32,10 @@ $userId = $_SESSION["USER_ID"];
                 <?php if (!$userId) { ?>
                     <li><a class="btnLogin-popup" href="<?php echo BASE_URL; ?>pages/signIn.php">SignIn</a></li>
                 <?php } ?>
+                <?php if (!$userId) { ?>
+                    <li><a class="btnLogin-popup" href="<?php echo BASE_URL; ?>pages/signUp.php">SignUp</a></li>
+                <?php } ?>
+
             </ul>
         </nav>
         <div class="content">

@@ -5,6 +5,7 @@ include "../config/connection.php";
 
 $userId = $_SESSION["USER_ID"];
 if (!$userId) {
+
     header("location:../pages/signIn.php");
     die;
 }
@@ -53,12 +54,8 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file)) {
         $sql = "UPDATE users SET avatar='$filename' WHERE id=$userId";
-        $query = "SELECT avatar FROM users WHERE  id=$userId LIMIT 1";
-        $data = mysqli_query($connection, $query);
-        $oldAvatar = mysqli_fetch_assoc($data);
         $avatarUploaded = mysqli_query($connection, $sql);
         if ($avatarUploaded) {
-            unlink($target_dir . $oldAvatar['avatar']);
             //Remove old image file
             header("Location: ../pages/profile.php");
             die;

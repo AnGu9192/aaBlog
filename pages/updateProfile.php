@@ -1,16 +1,27 @@
 <?php
-session_start();
-include "../layouts/header.php"; ?>
+include "../layouts/header.php";
+include dirname(__DIR__) . "/config/connection.php";
+
+$userId = $_SESSION["USER_ID"];
+if (!$userId) {
+    header("location:../pages/signIn.php");
+    die;
+}
+$query = "SELECT `firstname`,`lastname`, `avatar`,`gender`, `email`,`birthday` FROM users WHERE id=$userId LIMIT 1";
+$data = mysqli_query($connection, $query);
+$user = mysqli_fetch_assoc($data);
+
+?>
 <div class="container">
     <div class="contactForm">
-        <form action="<?php echo BASE_URL; ?>actions/insertDataAction.php" method="post" autocomplate="off">
+        <form action="<?php echo BASE_URL; ?>actions/editProfileAction.php" method="post" autocomplate="off">
             <div class='registration_page'>
-                <h2 class="signup">Insert Data</h2>
+                <h2 class="signup">Update Page</h2>
             </div>
 
             <div class="inputBox">
                 <input type="text" name="firstname" id="firstname"
-                    value="<?= isset($_SESSION["old"]["firstname"]) ? $_SESSION["old"]["firstname"] : '' ?>">
+                    value="<?= $user['firstname'] ?>">
                 <span>First Name *</span>
                 <p class="error">
                     <?= isset($_SESSION["errors"]["firstname"]) ? $_SESSION["errors"]["firstname"] : '' ?>
@@ -18,7 +29,7 @@ include "../layouts/header.php"; ?>
             </div>
             <div class="inputBox">
                 <input type="text" name="lastname" id="lastname"
-                    value="<?= isset($_SESSION["old"]["lastname"]) ? $_SESSION["old"]["lastname"] : '' ?>">
+                    value="<?= $user['lastname'] ?>">
                 <span>Last Name *</span>
                 <p class="error">
                     <?= isset($_SESSION["errors"]["lastname"]) ? $_SESSION["errors"]["lastname"] : '' ?>
@@ -27,18 +38,11 @@ include "../layouts/header.php"; ?>
             </div>
             <div class="inputBox">
                 <input type="text" name="email" id="email"
-                    value="<?= isset($_SESSION["old"]["email"]) ? $_SESSION["old"]["email"] : '' ?>">
+                    value="<?= $user['email'] ?>">
                 <span>Email *</span>
                 <p class="error">
                     <?= isset($_SESSION["errors"]["email"]) ? $_SESSION["errors"]["email"] : '' ?>
                 </p>
-
-            </div>
-            <div class="inputBox">
-                <input type="password" name="password" id="password" class="password-container" value="<?= isset($_SESSION["old"]["password"])?$_SESSION["old"]["password"]:'' ?>">
-                <i class="fa fa-eye" id="eye"></i> 
-                <span>Password*</span>
-                <p class="error"><?= isset($_SESSION["errors"]["password"])?$_SESSION["errors"]["password"]:'' ?></p>
 
             </div>
 
@@ -49,7 +53,7 @@ include "../layouts/header.php"; ?>
                     <p class="error"><?= isset($_SESSION["errors"]["birthday"]) ? $_SESSION["errors"]["birthday"] : '' ?></p>
                 
                 </div>
-            <div class="radio__contant" id="gen" value="<?= isset($_SESSION["old"]["gender"]) ? $_SESSION["old"]["gender"] : '' ?>">
+            <div class="radio__contant" id="gen" value="<?= $user['birthday'] ?>">
              <p>Gender:</p>
                 <label>
                 <input   type="radio" name="gender" value="male">
@@ -60,7 +64,7 @@ include "../layouts/header.php"; ?>
 
             </div> 
             <div class="inputBox">
-                <input type="submit" value="Insert" name="submit">
+                <input type="submit" value="Update" name="submit">
             </div>
 
         </form>
@@ -70,6 +74,5 @@ include "../layouts/header.php"; ?>
 </div>
 
 <?php
-session_destroy();
 include "../layouts/footer.php";
 ?>

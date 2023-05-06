@@ -41,11 +41,14 @@ function getImagePreview(event)
    const repeatPassword = document.getElementById("repeat_password");
    const errorElement = document.getElementById("firstname-error");
    const errorLastname = document.getElementById("lastname-error");
-   const errorBirthday = document.getElementById("birthday-error");
-
-   birthday-error
 
    const form = document.getElementById("signup");
+
+   form.addEventListener("submit", (e) => {
+     // e.preventDefault();
+     validateFirstname();
+     validateLastname()
+   });
 
    form.addEventListener("submit", (e) => {
      // e.preventDefault();
@@ -53,18 +56,9 @@ function getImagePreview(event)
      validateLastname();
      validateBirthday();
 
-   });
-
-   firstname.addEventListener("blur", (e) => {
-     validateFirstname();
-   });
-
    lastname.addEventListener("blur", (e) => {
      validateLastname();
    });
-   birthday.addEventListener("blur", (e) => {
-    validateBirthday();
-  });
 
    function validateFirstname(){
      let msg = [];
@@ -73,6 +67,22 @@ function getImagePreview(event)
      }
      if (msg.length > 0) {
        errorElement.innerText = 'Firstname is required and can`t be js';
+     }
+
+   lastname.addEventListener("blur", (e) => {
+     validateLastname();
+   });
+   birthday.addEventListener("blur", (e) => {
+    validateBirthday();
+  });
+
+   function validateLastname(){
+     let msg = [];
+     if (lastname.value === "" || lastname.value === null) {
+       msg.push("Lastname is required and can`t be ");
+     }
+     if (msg.length > 0) {
+       errorLastname.innerText = 'Lastname is required and can`t be js';
      }
 
    }

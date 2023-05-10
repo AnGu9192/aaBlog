@@ -20,57 +20,51 @@ $user = mysqli_fetch_assoc($data);
             </div>
 
             <div class="inputBox">
-                <input type="text" name="firstname" id="firstname"
-                    value="<?= $user['firstname'] ?>">
+                <input type="text" name="firstname" id="firstname" value="<?= $user['firstname'] ?>">
                 <span>First Name *</span>
                 <p class="error">
                     <?= isset($_SESSION["errors"]["firstname"]) ? $_SESSION["errors"]["firstname"] : '' ?>
                 </p>
             </div>
             <div class="inputBox">
-                <input type="text" name="lastname" id="lastname"
-                    value="<?= $user['lastname'] ?>">
+                <input type="text" name="lastname" id="lastname" value="<?= $user['lastname'] ?>">
                 <span>Last Name *</span>
                 <p class="error">
                     <?= isset($_SESSION["errors"]["lastname"]) ? $_SESSION["errors"]["lastname"] : '' ?>
                 </p>
-
             </div>
             <div class="inputBox">
-                <input type="text" name="email" id="email"
-                    value="<?= $user['email'] ?>">
+                <input type="text" name="email" id="email" value="<?= $user['email'] ?>">
                 <span>Email *</span>
                 <p class="error">
                     <?= isset($_SESSION["errors"]["email"]) ? $_SESSION["errors"]["email"] : '' ?>
                 </p>
-
             </div>
-
-     
-       <div class="inputBox">
-                    <input id="date" type="date" name="birthday" id="birthday" value="<?= isset($_SESSION["old"]["birthday"]) ? $_SESSION["old"]["birthday"] : '' ?>">
-                    <span>Birthday*</span>
-                    <p class="error"><?= isset($_SESSION["errors"]["birthday"]) ? $_SESSION["errors"]["birthday"] : '' ?></p>
-                
-                </div>
+            <div class="inputBox">
+                <input id="date" type="date" name="birthday" id="birthday"
+                    value="<?= isset($_SESSION["old"]["birthday"]) ? $_SESSION["old"]["birthday"] : '' ?>">
+                <span>Birthday*</span>
+                <p class="error">
+                    <?= isset($_SESSION["errors"]["birthday"]) ? $_SESSION["errors"]["birthday"] : '' ?>
+                </p>
+            </div>
             <div class="radio__contant" id="gen" value="<?= $user['birthday'] ?>">
-             <p>Gender:</p>
+                <p>Gender:</p>
                 <label>
-                <input   type="radio" name="gender" value="male">
-                Male</label><br>
+                    <input type="radio" name="gender" value="male">
+                    Male</label><br>
                 <input type="radio" name="gender" value="female">
                 <label>Female</label><br>
-                <p class="error"><?= isset($_SESSION["errors"]["gender"]) ? $_SESSION["errors"]["gender"] : '' ?></p>
+                <p class="error">
+                    <?= isset($_SESSION["errors"]["gender"]) ? $_SESSION["errors"]["gender"] : '' ?>
+                </p>
 
-            </div> 
+            </div>
             <div class="inputBox">
                 <input type="submit" value="Update" name="submit">
             </div>
-
         </form>
-
     </div>
-
 </div>
 
 <?php

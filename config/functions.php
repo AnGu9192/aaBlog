@@ -1,9 +1,10 @@
 <?php
 include "../config/connection.php";
 
-function select($table, $conditions, $what = '*'){
+function select($table, $conditions = [], $what = '*'){
 
     $whereArr = [];
+    $data = [];
     foreach ($conditions as $field => $value){
         $whereArr[] = $field . "='".$value."'";
     }
@@ -12,9 +13,18 @@ function select($table, $conditions, $what = '*'){
 
     $sql = "SELECT $what FROM $table WHERE $whereStr";
     $result = query($sql);
-    $data = mysqli_fetch_assoc($result); // Todo fetch all
+    while ($row = mysqli_fetch_assoc($result))// Todo fetch all
+    {
+        $data[] = $row;
+    }
+
+    if(count($data) == 1){
+        return $data[0];
+    }
 
     return $data;
+
+    
 }
 
 function insert($table,$data){
@@ -30,10 +40,7 @@ function insert($table,$data){
     return query($sql);
 }
 
-function update($table, $data, $conditions){
-
-
-    $sql = "UPDATE $table SET  $data  WHERE  $conditions";
+function update(){
 
 
 /*   $sql = "UPDATE $table SET  firstname = '$firstname',lastname = '$lastname', email='$email',birthday = '$birthday',  gender = '$gender' WHERE  id=$userId";
@@ -43,7 +50,7 @@ function update($table, $data, $conditions){
 
 
 function delete($table, $id){
-    $sql = "DELETE FROM $table WHERE  $id";
+    $sql = "DELETE FROM $table WHERE  id=$id";
     return query($sql);
 
 }
@@ -57,3 +64,4 @@ function query($sql){
     global $connection;
     return mysqli_query($connection, $sql);
 }
+

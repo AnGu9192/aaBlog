@@ -23,7 +23,6 @@ reapeatEye.addEventListener("click", function () {
 function getImagePreview(event)
 {
   document.getElementById("uploadSub").style.display = "block";
-
   var image=URL.createObjectURL(event.target.files[0]);
   var imagediv= document.getElementById('preview');
   var newimg=document.createElement('img');
@@ -32,6 +31,7 @@ function getImagePreview(event)
   newimg.width="100";
   imagediv.appendChild(newimg);
 }
+
  $(document).ready(function(){
 
    const firstname = document.getElementById("firstname");
@@ -51,66 +51,39 @@ function getImagePreview(event)
    });
 
    form.addEventListener("submit", (e) => {
-     // e.preventDefault();
-     validateFirstname();
-     validateLastname();
-     validateBirthday();
+    // e.preventDefault();
+    validateFirstname();
+    validateLastname();
 
-   lastname.addEventListener("blur", (e) => {
-     validateLastname();
-   });
 
-   function validateFirstname(){
-     let msg = [];
-     if (firstname.value === "" || firstname.value === null) {
-       msg.push("Firstname is required and can`t be ");
-     }
-     if (msg.length > 0) {
-       errorElement.innerText = 'Firstname is required and can`t be js';
-     }
-
-   lastname.addEventListener("blur", (e) => {
-     validateLastname();
-   });
-   birthday.addEventListener("blur", (e) => {
-    validateBirthday();
-  });
-
-   function validateLastname(){
-     let msg = [];
-     if (lastname.value === "" || lastname.value === null) {
-       msg.push("Lastname is required and can`t be ");
-     }
-     if (msg.length > 0) {
-       errorLastname.innerText = 'Lastname is required and can`t be js';
-     }
-
-   }
-
-   function validateLastname(){
-     let msg = [];
-     if (lastname.value === "" || lastname.value === null) {
-       msg.push("Lastname is required and can`t be ");
-     }
-     if (msg.length > 0) {
-       errorLastname.innerText = 'Lastname is required and can`t be js';
-     }
-
-   }
-
-   function validateBirthday(){
+  function validateFirstname(){
     let msg = [];
-    if (birthday.value === "" || birthday.value === null) {
-      msg.push("Birthday is required and can`t be  ");
+    if (firstname.value === "" || firstname.value === null) {
+      msg.push("Firstname is required and can`t be ");
     }
     if (msg.length > 0) {
-      errorBirthday.innerText = 'Birthday is required and can`t be js';
+      errorElement.innerText = 'Firstname is required and can`t be js';
     }
 
-  }
+   };
+   function validateLastname(){
+    let msg = [];
+    if (lastname.value === "" || lastname.value === null) {
+      msg.push("Firstname is required and can`t be ");
+    }
+    if (msg.length > 0) {
+      errorLastname.innerText = 'Lastname is required and can`t be js';
+    }
+
+   };
+});
+  
+
+});
 
 
-   $('#email').blur(function(){
+ 
+  $('#email').blur(function(){
     var email = $(this).val();
     if(email == ""){
       $("#email-error").fadeOut();
@@ -129,5 +102,3 @@ function getImagePreview(event)
         });
       }
   });
-})
-

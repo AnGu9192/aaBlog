@@ -74,14 +74,19 @@ img{
 }
 .btnCreateProject a{
   color:white;
+  text-decoration: none;
 }
 
 .btnCreateProject:hover{
   background: #fff;
   color:#375e63;
+  text-decoration: none;
 
 }
-
+.logaout a{
+  color:white;
+  text-decoration: none;
+}
 
 .pagination {
   margin-left: 28px;

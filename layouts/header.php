@@ -17,6 +17,8 @@ $userId = @$_SESSION["USER_ID"];
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Anna | Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
    <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/projects.css">
 
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/style.css">
@@ -24,7 +26,7 @@ $userId = @$_SESSION["USER_ID"];
 
 <body>
     <main>
-        <nav class="navbar">
+        <nav class="navbar d-flex justify-content-center">
             <ul>
                 <li><a href="../index.php" class="active">Home </a></li>
                 <li><a href="<?php echo BASE_URL; ?>pages/projects.php">Projects</a></li>

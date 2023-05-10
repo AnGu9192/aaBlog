@@ -27,16 +27,15 @@ if (isset($_POST['submit'])) {
         'gender' => $gender,
       ];
 
-     $sql = update('users', $data, $userId);
-/*     $sql = "UPDATE users SET  firstname = '$firstname',lastname = '$lastname', email='$email',birthday = '$birthday',  gender = '$gender' WHERE  id=$userId";
+   $sql = "UPDATE users SET  firstname = '$firstname',lastname = '$lastname', email='$email',birthday = '$birthday',  gender = '$gender' WHERE  id=$userId";
 
     if (mysqli_query($connection, $sql)) {
         header("location:../pages/profile.php");
     } else {
         echo "Error updating record: " . mysqli_error($connection);
-    } */
+    } 
 
-/*     mysqli_close($connection);
- */
+     mysqli_close($connection);
+
 }
 header("Location: ../pages/profile.php");die; 

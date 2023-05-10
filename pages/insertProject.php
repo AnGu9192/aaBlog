@@ -3,54 +3,53 @@ session_start();
 include "../layouts/header.php"; ?>
 <div class="container">
     <div class="contactForm">
-        <form action="<?php echo BASE_URL; ?>actions/insertProjectAction.php" method="post" autocomplate="off">
+        <form action="<?php echo BASE_URL; ?>actions/insertProjectAction.php" method="post"
+            enctype="multipart/form-data" autocomplate="off">
             <div class='registration_page'>
-                <h2 class="signup">Insert Project</h2>
+                <label>
+                    <h2 class="signup">Insert Project</h2>
             </div>
-            <div class="inputBox">
-                <input type="file" name="projectimg" id="projectimg" enctype='multipart/form-data'
-                    value="<?= isset($_SESSION["old"]["projectimg"]) ? $_SESSION["old"]["projectimg"] : '' ?>">
-                <span>Project Img</span>
-                <p class="error">
-                    <?= isset($_SESSION["errors"]["projectimg"]) ? $_SESSION["errors"]["projectimg"] : '' ?>
-                </p>
-            </div>
-            <div class="inputBox">
-                <input type="text" name="projectcount" id="projectcount"
-                    value="<?= isset($_SESSION["old"]["projectcount"]) ? $_SESSION["old"]["projectcount"] : '' ?>">
-                <span>Project Count</span>
-                <p class="error">
-                    <?= isset($_SESSION["errors"]["projectcount"]) ? $_SESSION["errors"]["projectcount"] : '' ?>
-                </p>
+           
+            <form class="" action="" method="post" autocomplete="off" enctype="multipart/form-data">
 
-            </div>
-        
-            <div class="inputBox">
-                <input type="text" name="projectname" id="projectname" class="password-container" value="<?= isset($_SESSION["old"]["projectname"])?$_SESSION["old"]["projectname"]:'' ?>">
-                <span>Project Name</span>
-                <p class="error"><?= isset($_SESSION["errors"]["password"])?$_SESSION["errors"]["password"]:'' ?></p>
+                <div class="inputBox">
+                <span style="color:white">Project Image</span>
 
-            </div>
-
-     
-       <div class="inputBox">
-                    <input id="date"  name="description" id="description" value="<?= isset($_SESSION["old"]["description"]) ? $_SESSION["old"]["description"] : '' ?>">
-                    <span>Description</span>
-                    <p class="error"><?= isset($_SESSION["errors"]["description"]) ? $_SESSION["errors"]["description"] : '' ?></p>
-                
+                <label><i class="fa fa-plus" style="font-size:22px;
+                                                    padding:15px;margin-top:35px;cursor:pointer"></i>
+                <input type="file" name="image" id="image" style="display: none; visibolity: none;"/>
+                <div id="projectImage"></div>
+                    </label>
                 </div>
-        
-            <div class="inputBox">
-                <input type="submit" value="Insert" name="submit">
-            </div>
 
-        </form>
+                <div class="inputBox">
+                    <input name="title" id="title">
+                    <span>Project Title</span>
+                    <p class="error">
+                        <?= isset($_SESSION["errors"]["title"]) ? $_SESSION["errors"]["title"] : '' ?>
+                    </p>
+                </div>
+                <div class="inputBox">
+                    <input name="description" id="description">
+                    <span>Description</span>
+                    <p class="error">
+                        <?= isset($_SESSION["errors"]["description"]) ? $_SESSION["errors"]["description"] : '' ?>
+                    </p>
 
+                </div>
+                <div class="inputBox">
+                    <input type="submit" value="Insert" name="submit">
+               
+                </div>
+
+            </form>
+            <p class="error">
+                        <?= isset($_SESSION["errors"]["submit"]) ? $_SESSION["errors"]["submit"] : '' ?>
+                    </p>
     </div>
 
 </div>
 
 <?php
-session_destroy();
 include "../layouts/footer.php";
 ?>

@@ -1,7 +1,7 @@
 <?php
 include "../config/connection.php";
 
-function select($table, $conditions = [], $what = '*'){
+function selectOne($table, $conditions = [], $what = '*'){
 
     $whereArr = [];
     $data = [];
@@ -13,17 +13,31 @@ function select($table, $conditions = [], $what = '*'){
 
     $sql = "SELECT $what FROM $table WHERE $whereStr";
     $result = query($sql);
+    $row = mysqli_fetch_assoc($result);
+
+    return $row;
+
+
+}
+
+function select($table, $conditions = [], $what = '*'){
+
+    $whereArr = [];
+    $data = [];
+    foreach ($conditions as $field => $value){
+        $whereArr[] = $field . "='".$value."'";
+    }
+
+    $whereStr = implode(' AND ',$whereArr);
+
+    $sql = "SELECT $what FROM $table  WHERE $whereStr";
+    $result = query($sql);
     while ($row = mysqli_fetch_assoc($result))// Todo fetch all
     {
         $data[] = $row;
     }
 
-    if(count($data) == 1){
-        return $data[0];
-    }
-
     return $data;
-
     
 }
 
@@ -59,6 +73,31 @@ function upload(){
 //Todo
  
 } 
+
+
+function paginate($table, $conditions,$what = '*', $count){
+    $whereArr = [];
+    $data = [];
+
+    foreach ($conditions as $field => $value){
+        $whereArr[] = $field . "='".$value."'";
+    }
+
+    $whereStr = implode(' AND ',$whereArr);
+    $page = 1;
+    if(isset($_GET["page"])){
+        $page = $_GET["page"];
+    }
+    $offset = ($page-1)*$count;
+    $sql = "SELECT $what FROM $table WHERE $whereStr   LIMIT $count OFFSET $offset";
+    $result = query($sql);
+    while ($row = mysqli_fetch_assoc($result))// Todo fetch all
+    {
+        $data[] = $row;
+    }
+
+    return $data;
+}
 
 function query($sql){
     global $connection;

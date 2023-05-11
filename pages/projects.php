@@ -1,9 +1,9 @@
 <?php include "../layouts/header.php"; 
 include "../config/functions.php";
-
-$projects = select('projects',['status'=>'active']);
-var_dump($projects);
-
+$pageSize = 3;
+$projects = paginate('projects',['status'=>'active'],'*', $pageSize);
+$allProjects = select('projects',['status'=>'active'],'*');
+$totalPages = ceil(count($allProjects)/$pageSize);
 ?>
 
 <section class="projects sec-width" id="projects">
@@ -11,19 +11,12 @@ var_dump($projects);
         <h2>projects</h2>
     </div>
     <div>
-        <div>
-            <?php if ($userId) { ?>
-                <a class="btnCreateProject" href="<?php echo BASE_URL; ?>pages/insertProject.php">Create Project</a>
-            <?php } ?>
-            <p style="float:right;" class="logaout"><a href="../actions/logout.php">Logout</a></p>
-        </div>
-
 
     </div>
     <div class="projects-container">
     <?php foreach($projects as $project){ ?>
         <article class="project">
-            <div class="projectSlide">
+
                 <div class="project-image">
                    <img src="<?php echo BASE_URL; ?>uploads/<?php echo $project['image'];?>" name="image" id="image"/>
                 </div>
@@ -32,39 +25,24 @@ var_dump($projects);
                     <p><?php echo $project['title'];?></p>
                     <b> Skills:<?php echo $project['description'];?></b>
                 </div>
-            </div>
         </article>
         
-        <?php }?>
-
-      <!--   <article class="project">
-            <div class="projectSlide">
-
-                <div class="project-image">
-                    <img src="<?php echo BASE_URL; ?>images/2-oooarpi.jpeg" />
-                </div>
-                <div class="project-text">
-                    <h3>Projects2</h3>
-                    <p>OOO"Arpi" office</p>
-                    <b> Skills:"Html,CSS,JavaScript"</b>
-                </div>
-            </div>
-        </article>
+        <?php } ?>
 
 
-
- -->
 
 
     </div>
-    <div class="pagination">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <?php for($page = 1; $page <= $totalPages; $page++){ ?>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<?php echo $page ?>"><?php echo $page ?></a>
+                </li>
+            <?php } ?>
+        </ul>
+        </nav>
 
-        <div class="page">0<span class="page-num"></span>|10</div>
-        <div class="img-slide-arrow">
-            <img src="../images/arrow-left.png" alt="arrow-left" class="img-slide-arrow1 prev">
-            <img src="../images/arrow-right.png" alt="arrow-right" class="img-slide-arrow2 next">
-        </div>
-    </div>
 </section>
 
 <?php include "../layouts/footer.php"; ?>

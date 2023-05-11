@@ -1,8 +1,8 @@
 const passwordInput = document.querySelector("#password");
 const repeatpasswordInput = document.querySelector("#repeat_password");
 
-const eye = document.querySelector("#eye");
-const reapeatEye = document.querySelector("#repeat-eye");
+const eye = document.getElementById("eye");
+const reapeatEye = document.getElementById("repeat-eye");
 
 eye.addEventListener("click", function () {
   this.classList.toggle("fa-eye-slash");
@@ -30,7 +30,19 @@ function getImagePreview(event)
   newimg.src=image;
   newimg.width="100";
   imagediv.appendChild(newimg);
-}
+};
+function getImage(event)
+{
+  document.getElementById("uploadImageProect").style.display = "block";
+  var image=URL.createObjectURL(event.target.files[0]);
+  var imagediv= document.getElementById('display-image');
+  var newimg=document.createElement('img');
+  imagediv.innerHTML='';
+  newimg.src=image;
+  newimg.width="60";
+  imagediv.appendChild(newimg);
+};
+
 
  $(document).ready(function(){
 
@@ -77,28 +89,27 @@ function getImagePreview(event)
 
    };
 });
-  
+$('#email').blur(function(){
+  var email = $(this).val();
+  if(email == ""){
+    $("#email-error").fadeOut();
+
+    }else{
+      $.ajax({
+        url:"../actions/checkEmail.php",
+        method: "GET",
+        data:{
+          email:email
+        },
+        success: function(data){
+          let response = JSON.parse(data);
+          $("#email-error").fadeIn().html(response.message);
+        }
+      });
+    }
+});
+
 
 });
 
 
- 
-  $('#email').blur(function(){
-    var email = $(this).val();
-    if(email == ""){
-      $("#email-error").fadeOut();
-
-      }else{
-        $.ajax({
-          url:"../actions/checkEmail.php",
-          method: "GET",
-          data:{
-            email:email
-          },
-          success: function(data){
-            let response = JSON.parse(data);
-            $("#email-error").fadeIn().html(response.message);
-          }
-        });
-      }
-  });

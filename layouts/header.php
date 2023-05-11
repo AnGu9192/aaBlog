@@ -29,12 +29,14 @@ $userId = @$_SESSION["USER_ID"];
         <nav class="navbar d-flex justify-content-center">
             <ul>
                 <li><a href="../index.php" class="active">Home </a></li>
+                   <?php if (!$userId) { ?>
                 <li><a href="<?php echo BASE_URL; ?>pages/projects.php">Projects</a></li>
+                     <?php } else  { ?>
+                                <li><a href="<?php echo BASE_URL; ?>pages/myprojects.php">Projects</a></li>
+                     <?php } ?>
                 <li>Experience</li>
                 <?php if (!$userId) { ?>
                     <li><a class="btnLogin-popup" href="<?php echo BASE_URL; ?>pages/signIn.php">SignIn</a></li>
-                <?php } ?>
-                <?php if (!$userId) { ?>
                     <li><a class="btnLogin-popup" href="<?php echo BASE_URL; ?>pages/signUp.php">SignUp</a></li>
                 <?php } ?>
 

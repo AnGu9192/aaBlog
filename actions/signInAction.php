@@ -13,7 +13,7 @@ if (isset($_POST["email"]) && !empty($_POST["email"])) {
     if (isset($_POST["password"]) && !empty($_POST["password"])) {
         $password = $_POST["password"];
 /*         unset($_SESSION["errors"]["password"]);
-        $_SESSION["old"]["password"] = $password; */  //harc
+        $_SESSION["old"]["password"] = $password;*/  //harc
     }
     else{
         $_SESSION["errors"]["password"] = "Your Login Name or Password is invalid";
@@ -22,7 +22,7 @@ if (isset($_POST["email"]) && !empty($_POST["email"])) {
 
      if(!isset($_SESSION["errors"])){
 
-        $user = select('users',['email'=>$email],'id,password');
+         $user = selectOne('users',['email'=>$email],'id,password');
         if ($user) {
             if(password_verify($password, $user["password"])){
                 $_SESSION['USER_ID'] = $user['id'];

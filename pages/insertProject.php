@@ -15,12 +15,14 @@ include "../layouts/header.php"; ?>
                 <div class="inputBox">
                 <span style="color:white">Project Image</span>
 
-                <label><i class="fa fa-plus" style="font-size:22px;
-                                                    padding:15px;margin-top:35px;cursor:pointer"></i>
-                <input type="file" name="image" id="image" style="display: none; visibolity: none;"/>
-                <div id="projectImage"></div>
-                    </label>
-                </div>
+               <label>
+               <i class="fa fa-plus" style="font-size:22px; padding:15px;margin-top:35px;cursor:pointer"
+                               onchange="getImage(event)"></i>
+               <input type="file" name="image" id="image" class="hide" id="upload" onchange="getImage(event)">
+            <div id="display-image"></div>
+            <div id="uploadImageProect"></div>
+              </label>
+             </div>
 
                 <div class="inputBox">
                     <input name="title" id="title">
@@ -45,7 +47,7 @@ include "../layouts/header.php"; ?>
             </form>
             <p class="error">
                         <?= isset($_SESSION["errors"]["submit"]) ? $_SESSION["errors"]["submit"] : '' ?>
-                    </p>
+           </p>
     </div>
 
 </div>

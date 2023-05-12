@@ -59,6 +59,8 @@ if ($uploadOk == 0) {
         $avatarUploaded = mysqli_query($connection, $sql);
         if ($avatarUploaded) {
             //Remove old image file
+            unlink("upload" . $filename);
+            var_dump( $filename);
             header("Location: ../pages/profile.php");
             die;
         }

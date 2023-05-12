@@ -42,13 +42,13 @@ $user = mysqli_fetch_assoc($data);
             </div>
             <div class="inputBox">
                 <input id="date" type="date" name="birthday" id="birthday"
-                    value="<?= isset($_SESSION["old"]["birthday"]) ? $_SESSION["old"]["birthday"] : '' ?>">
+                     value="<?= $user['birthday'] ?>">
                 <span>Birthday*</span>
                 <p class="error">
                     <?= isset($_SESSION["errors"]["birthday"]) ? $_SESSION["errors"]["birthday"] : '' ?>
                 </p>
             </div>
-            <div class="radio__contant" id="gen" value="<?= $user['birthday'] ?>">
+            <div class="radio__contant" id="gen">
                 <p>Gender:</p>
                 <label>
                     <input type="radio" name="gender" value="male">

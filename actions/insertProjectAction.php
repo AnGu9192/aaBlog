@@ -56,7 +56,10 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
     $projectInserted = insert('projects',$data);
+
     if($projectInserted){
+      //Remove old image file
+      unlink("uploads"). $target_file;
       header("Location: ../pages/projects.php");die; 
     }     
       

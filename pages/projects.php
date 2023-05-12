@@ -18,10 +18,10 @@ $totalPages = ceil(count($allProjects)/$pageSize);
         <article class="project">
 
                 <div class="project-image">
-                   <img src="<?php echo BASE_URL; ?>uploads/<?php echo $project['image'];?>" name="image" id="image"/>
+          <a href="<?php echo BASE_URL; ?>pages/projectImage.php?id=<?php echo $project['id'];?>"> <img src="<?php echo BASE_URL; ?>uploads/<?php echo $project['image'];?>" name="image" id="image"/></a>
                 </div>
                 <div class="project-text">
-                    <h3> <a href="<?php echo BASE_URL; ?>pages/projectName.php?id=<?php echo $project['id'];?>">Projects2</a></h3>
+                    <h3 class="white">Project</h3>
                     <p><?php echo $project['title'];?></p>
                     <b> Skills:<?php echo $project['description'];?></b>
                 </div>
@@ -30,13 +30,11 @@ $totalPages = ceil(count($allProjects)/$pageSize);
         <?php } ?>
 
 
-
-
     </div>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
+    <nav aria-label="Page navigation example  p-5">
+        <ul class="pagination justify-content-center">
             <?php for($page = 1; $page <= $totalPages; $page++){ ?>
-                <li class="page-item">
+                <li class="page-item ">
                     <a class="page-link" href="?page=<?php echo $page ?>"><?php echo $page ?></a>
                 </li>
             <?php } ?>

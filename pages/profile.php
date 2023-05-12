@@ -44,7 +44,7 @@ $user = mysqli_fetch_assoc($data);
                 <a href="<?php echo BASE_URL; ?>pages/updateProfile.php" class="edit_profile">Edit Profile</a>
             </div>
             <div>
-                <a href="<?php echo BASE_URL; ?>actions/deleteProfileAction.php" class="edit_profile">Delete User</a>
+                <a href="<?php echo BASE_URL; ?>actions/deleteUserAction.php" class="edit_profile">Delete User</a>
             </div>
         </div>
         </label>

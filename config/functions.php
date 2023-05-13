@@ -30,9 +30,10 @@ function select($table, $conditions = [], $what = '*'){
 
     $whereStr = implode(' AND ',$whereArr);
 
-    $sql = "SELECT $what FROM $table  WHERE $whereStr";
+    $sql = "SELECT $what FROM $table WHERE $whereStr";
+
     $result = query($sql);
-    while ($row = mysqli_fetch_assoc($result))// Todo fetch all
+    while ($row = mysqli_fetch_assoc($result))
     {
         $data[] = $row;
     }
@@ -54,18 +55,17 @@ function insert($table,$data){
     return query($sql);
 }
 
-function update($table, $data, $id){
-
-    /*$whereArr[];
-    foreach ($conditions as $field => $value){
-        $whereArr[] = $field . "='".$value."'";
+function update($table, $conditions, $id){
+    $valuesArr = [];
+    foreach ($conditions as $fields => $value){
+        $valuesArr[] = $fields .  "='" . $value . "'";
     }
-    $sql = "UPDATE $table SET -----  WHERE  id=$userId";*/
+    $values = implode(',',$valuesArr);
 
-/*   $sql = "UPDATE $table SET  firstname = '$firstname',lastname = '$lastname', email='$email',birthday = '$birthday',  gender = '$gender' WHERE  id=$userId";
- */
+    $sql = "UPDATE $table SET  $values WHERE  id=$id";
+    return query($sql);
 
-    }
+}
 
 
 function delete($table, $id){
@@ -96,7 +96,7 @@ function paginate($table, $conditions,$what = '*', $count){
     $offset = ($page-1)*$count;
     $sql = "SELECT $what FROM $table WHERE $whereStr   LIMIT $count OFFSET $offset";
     $result = query($sql);
-    while ($row = mysqli_fetch_assoc($result))// Todo fetch all
+    while ($row = mysqli_fetch_assoc($result))
     {
         $data[] = $row;
     }

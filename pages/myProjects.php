@@ -1,8 +1,8 @@
 <?php include "../layouts/header.php"; 
 include "../config/functions.php";
 $pageSize = 3;
-$projects = paginate('projects',['status'=>'active'],'*',$pageSize);
-$allProjects = select('projects',['status'=>'active'],'*');
+$projects = paginate('projects',['status'=>'active','user_id' => $userId],'*',$pageSize);
+$allProjects = select('projects',['status'=>'active','user_id' => $userId],'*');
 $totalPages = ceil(count($allProjects)/$pageSize);
 ?>
 
@@ -46,7 +46,7 @@ $totalPages = ceil(count($allProjects)/$pageSize);
     <nav aria-label="Page navigation example p-5">
         <ul class="pagination justify-content-center">
             <?php for($page = 1; $page <= $totalPages; $page++){ ?>
-                <li class="page-item">
+                <li class="page-item p-1 rounded-circle ">
                     <a class="page-link" href="?page=<?php echo $page ?>"><?php echo $page ?></a>
                 </li>
             <?php } ?>

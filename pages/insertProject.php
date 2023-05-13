@@ -9,7 +9,7 @@ include "../layouts/header.php"; ?>
                 <label>
                     <h2 class="signup">Insert Project</h2>
             </div>
-           
+
             <form class="" action="" method="post" autocomplete="off" enctype="multipart/form-data">
 
                 <div class="inputBox">
@@ -41,7 +41,7 @@ include "../layouts/header.php"; ?>
                 </div>
                 <div class="inputBox">
                     <input type="submit" value="Insert" name="submit">
-               
+
                 </div>
 
             </form>
@@ -54,4 +54,4 @@ include "../layouts/header.php"; ?>
 
 <?php
 include "../layouts/footer.php";
-?>
+        ?>

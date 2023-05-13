@@ -1,6 +1,7 @@
 :root{
   --transition: all 0.7s ease;
-  --black: #1b180a;
+  --black: #1b180a;project
+
   --dark: #7c7777;
 }
 .title{
@@ -49,6 +50,7 @@ img{
   width: 100%;
   display: block;
 }
+
 @media (min-width: 900px){
   .projects-container{
       display: flex;

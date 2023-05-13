@@ -69,4 +69,4 @@ $user = mysqli_fetch_assoc($data);
 
 <?php
 include "../layouts/footer.php";
-?>
+        ?>

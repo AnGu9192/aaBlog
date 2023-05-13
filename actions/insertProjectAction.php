@@ -59,7 +59,6 @@ if ($uploadOk == 0) {
 
     if($projectInserted){
       //Remove old image file
-      unlink("uploads"). $target_file;
       header("Location: ../pages/projects.php");die; 
     }     
       

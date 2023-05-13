@@ -27,15 +27,17 @@ if (isset($_POST['submit'])) {
         'gender' => $gender,
       ];
 
-   $sql = "UPDATE users SET  firstname = '$firstname',lastname = '$lastname', email='$email',birthday = '$birthday',  gender = '$gender' WHERE  id=$userId";
+   //$sql = "UPDATE users SET  firstname = '$firstname',lastname = '$lastname', email='$email',birthday = '$birthday',  gender = '$gender' WHERE  id=$userId";
 
-    if (mysqli_query($connection, $sql)) {
-        header("location:../pages/profile.php");
-    } else {
-        echo "Error updating record: " . mysqli_error($connection);
-    } 
 
-     mysqli_close($connection);
+    $usersUpdated = update('users',$data,$userId );
+    if($usersUpdated){
+     header("Location: ../pages/profile.php");die;
+    }
+    else {
+       echo "Sorry, there was an error uptade your file.";
+
+   }
 
 }
 header("Location: ../pages/profile.php");die; 

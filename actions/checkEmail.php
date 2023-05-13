@@ -8,10 +8,10 @@ $data = mysqli_query($connection, $query);
 
 $emailExists = mysqli_fetch_assoc($data);
 
-$data = [
-    'error' => false,
-    'message' => "$email is available",
-];
+//$data = [
+ //   'error' => false,
+ //   'message' => "$email is available",
+//];
 
 if($emailExists){
     $data = [

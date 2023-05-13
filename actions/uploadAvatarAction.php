@@ -1,9 +1,9 @@
 <?php
 session_start();
-
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", 1);
 include "../config/connection.php";
+
 
 $userId = $_SESSION["USER_ID"];
 if (!$userId) {
@@ -55,12 +55,12 @@ if ($uploadOk == 0) {
     // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file)) {
-        $sql = "UPDATE users SET avatar='$filename' WHERE id=$userId";
+         $sql = "UPDATE users SET avatar='$filename' WHERE id=$userId";
+
         $avatarUploaded = mysqli_query($connection, $sql);
         if ($avatarUploaded) {
             //Remove old image file
-            unlink("upload" . $filename);
-            var_dump( $filename);
+             unlink("uploads"). $target_file;
             header("Location: ../pages/profile.php");
             die;
         }

@@ -21,9 +21,9 @@ $user = mysqli_fetch_assoc($data);
 
         $user['gender'] == "male" ? '<img src="../images/male.jpg" />' : '<img src="../images/female.jpg" />';
 
-    } else {
-        $src = UPLOADS . $user['avatar'];
-    } ?>
+} else {
+    $src = UPLOADS . $user['avatar'];
+} ?>
     <label>
        <form action="<?php echo BASE_URL; ?>actions/uploadAvatarAction.php" method="post"
             enctype="multipart/form-data">
@@ -49,7 +49,7 @@ $user = mysqli_fetch_assoc($data);
         </div>
         </label>
 
- 
+
     <p>
         <?php echo $user['fullname'] ?>
     <p>

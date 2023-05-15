@@ -2,26 +2,20 @@
 include "../layouts/header.php";
 include "../config/functions.php";
 
-$allProjects = select('projects',['status'=>'active'],'*');
 
+$project = select('projects',['status'=>'active','user_id' => $userId]);
 
 
 $projectId = $_GET['id'];
 
-echo $projectId;
+var_dump($project);
 
 
 ?>
 
          <div class="project-image-display">
 
-      <img src="<?php echo BASE_URL; ?>images/1-semur.jpg" name="image" id="image"
-          style=" display: block;
-          margin-left: auto;
-          margin-right: auto;
-          margin-top:20px;
-          width:60%";
-       />
+      <img src="<?php echo BASE_URL; ?>uploads/<?php echo $project['image'];?>" />
 
         </div>
 

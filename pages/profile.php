@@ -11,6 +11,7 @@ if (!$userId) {
 }
 $query = "SELECT CONCAT(`firstname`,' ',`lastname`) as `fullname`, `avatar`,`gender`, `email`,`birthday` FROM users WHERE id=$userId LIMIT 1";
 $data = mysqli_query($connection, $query);
+
 $user = mysqli_fetch_assoc($data);
 // Select user with id
 ?>
@@ -44,7 +45,7 @@ $user = mysqli_fetch_assoc($data);
                 <a href="<?php echo BASE_URL; ?>pages/updateProfile.php" class="edit_profile">Edit Profile</a>
             </div>
             <div>
-                <a href="<?php echo BASE_URL; ?>actions/deleteUserAction.php" class="edit_profile">Delete User</a>
+                <a href="<?php echo BASE_URL; ?>actions/deleteUserAction.php" class="edit_profile"  onclick="return checkDelete()">Delete User</a>
             </div>
         </div>
         </label>
@@ -64,5 +65,9 @@ $user = mysqli_fetch_assoc($data);
     </p>
     <p>Click here to&ensp;<a href="../actions/logout.php">Logout</a></p>
 </div>
-
+<script language="JavaScript" type="text/javascript">
+function checkDelete(){
+    return confirm('Are you sure?');
+}
+</script>
 <?php include "../layouts/footer.php"; ?>

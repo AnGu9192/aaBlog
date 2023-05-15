@@ -34,6 +34,8 @@ $userId = @$_SESSION["USER_ID"];
                      <?php } else  { ?>
                                 <li><a href="<?php echo BASE_URL; ?>pages/projects.php">Projects</a></li>
                                 <li><a href="<?php echo BASE_URL; ?>pages/myprojects.php">My Projects</a></li>
+                                <li><a href="<?php echo BASE_URL; ?>pages/profile.php">Profile</a></li>
+
                      <?php } ?>
                 <li>Experience</li>
                 <?php if (!$userId) { ?>

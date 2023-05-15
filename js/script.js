@@ -43,7 +43,6 @@ function getImage(event)
   imagediv.appendChild(newimg);
 };
 
-
  $(document).ready(function(){
 
    const firstname = document.getElementById("firstname");
@@ -108,6 +107,8 @@ $('#email').blur(function(){
       });
     }
 });
+
+
 
 
 });

@@ -132,5 +132,8 @@ img{
   display: block;
   animation: show .5s ease;
 }
-
+.project-img{
+  width:100px;
+  height:100px;
+}
 

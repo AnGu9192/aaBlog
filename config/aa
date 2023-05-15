@@ -63,11 +63,9 @@ function update($table, $conditions, $id){
     $values = implode(',',$valuesArr);
 
     $sql = "UPDATE $table SET  $values WHERE  id=$id";
-    var_dump($sql);
     return query($sql);
 
-}
-
+    }
 
 function delete($table, $id){
     $sql = "DELETE FROM $table WHERE  id=$id";
@@ -79,7 +77,6 @@ function upload(){
 //Todo
  
 } 
-
 
 function paginate($table, $conditions,$what = '*', $count){
     $whereArr = [];
@@ -97,10 +94,10 @@ function paginate($table, $conditions,$what = '*', $count){
     $offset = ($page-1)*$count;
     $sql = "SELECT $what FROM $table WHERE $whereStr   LIMIT $count OFFSET $offset";
     $result = query($sql);
-    while ($row = mysqli_fetch_assoc($result))
-    {
-        $data[] = $row;
-    }
+    while ($row = mysqli_fetch_assoc($result))// Todo fetch all
+        {
+            $data[] = $row;
+        }
 
     return $data;
 }

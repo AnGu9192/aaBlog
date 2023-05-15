@@ -3,6 +3,7 @@ include "../config/functions.php";
 $pageSize = 3;
 $projects = paginate('projects',['status'=>'active','user_id' => $userId],'*',$pageSize);
 $allProjects = select('projects',['status'=>'active','user_id' => $userId],'*');
+$avatar = selectOne('users',['status'=>'new','id' => $userId], '*');
 $totalPages = ceil(count($allProjects)/$pageSize);
 ?>
 
@@ -28,12 +29,16 @@ $totalPages = ceil(count($allProjects)/$pageSize);
                   <img src="<?php echo BASE_URL; ?>uploads/<?php echo $project['image'];?>" name="image" id="image"/>
                 </div>
                 <div class="project-text">
-                    <h3>Projects</h3>
+                    <h3 class="d-flex">Projects
+                          <?php if ($userId)  { ?>
+                    <img src="<?php echo BASE_URL; ?>uploads/<?php echo $avatar['avatar'];?>" style="width:15%; border-radius: 50%"/>
+                          <?php } ?></h3>
                     <p><?php echo $project['title'];?></p>
                     <b> Skills:<?php echo $project['description'];?></b>
                 </div>
+                
                      <a class="btnCreateProject" href="<?php echo BASE_URL; ?>pages/updateProject.php?id=<?=$project['id']?>">Update Project</a>
-                     <a class="btnCreateProject" href="<?php echo BASE_URL; ?>actions/deleteProjectAction.php?id=<?=$project['id']?>">Delete Project</a>
+                     <a class="btnCreateProject" href="<?php echo BASE_URL; ?>actions/deleteProjectAction.php?id=<?=$project['id']?>"   onclick="return checkDelete()">Delete Project</a>
 
         </article>
 
@@ -54,5 +59,9 @@ $totalPages = ceil(count($allProjects)/$pageSize);
         </nav>
 
 </section>
-
+<script language="JavaScript" type="text/javascript">
+function checkDelete(){
+    return confirm('Are you sure?');
+}
+</script>
 <?php include "../layouts/footer.php"; ?>

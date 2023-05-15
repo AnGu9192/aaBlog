@@ -27,17 +27,15 @@ if (isset($_POST['submit'])) {
         'gender' => $gender,
       ];
 
-   //$sql = "UPDATE users SET  firstname = '$firstname',lastname = '$lastname', email='$email',birthday = '$birthday',  gender = '$gender' WHERE  id=$userId";
 
-
-    $usersUpdated = update('users',$data,$userId );
+    $usersUpdated = update('users',$data,$userId);
     if($usersUpdated){
-     header("Location: ../pages/profile.php");die;
+        header("Location: ../pages/profile.php");die;
     }
     else {
-       echo "Sorry, there was an error uptade your file.";
+        echo "Sorry, there was an error uptade your file.";
 
-   }
+    }
 
 }
 header("Location: ../pages/profile.php");die; 

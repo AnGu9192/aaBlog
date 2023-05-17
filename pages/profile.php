@@ -1,5 +1,5 @@
 <?php
-include dirname(__DIR__) . "/config/connection.php";
+//include dirname(__DIR__) . "/config/connection.php";
 include "../layouts/header.php";
 
 
@@ -63,7 +63,6 @@ $user = mysqli_fetch_assoc($data);
     <p>
         <?php echo $user['gender'] ?>
     </p>
-    <p>Click here to&ensp;<a href="../actions/logout.php">Logout</a></p>
 </div>
 <script language="JavaScript" type="text/javascript">
 function checkDelete(){

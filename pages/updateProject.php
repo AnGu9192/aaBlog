@@ -26,7 +26,6 @@ $project = selectOne('projects',['id'=> $projectId]);
             <div id="uploadImageProect"></div>
               </label>
              <input name="id" id="id" type="hidden" value="<?= $project['id'] ?>">
-
             </div>
 
                 <div class="inputBox">

@@ -4,20 +4,26 @@ const repeatpasswordInput = document.querySelector("#repeat_password");
 const eye = document.getElementById("eye");
 const reapeatEye = document.getElementById("repeat-eye");
 
-eye.addEventListener("click", function () {
-  this.classList.toggle("fa-eye-slash");
-  const type =
+
+if(eye){
+  eye.addEventListener("click", function () {
+    this.classList.toggle("fa-eye-slash");
+    const type =
     passwordInput.getAttribute("type") === "password" ? "text" : "password";
-  passwordInput.setAttribute("type", type);
-});
-reapeatEye.addEventListener("click", function () {
-  this.classList.toggle("fa-eye-slash");
-  const type =
+    passwordInput.setAttribute("type", type);
+  });
+}
+if(reapeatEye){
+  reapeatEye.addEventListener("click", function () {
+    this.classList.toggle("fa-eye-slash");
+    const type =
     repeatpasswordInput.getAttribute("type") === "repeat_password"
       ? "text"
       : "repeat_password";
-  repeatpasswordInput.setAttribute("type", type);
-});
+    repeatpasswordInput.setAttribute("type", type);
+  });
+}
+
 
 
 function getImagePreview(event)
@@ -43,28 +49,29 @@ function getImage(event)
   imagediv.appendChild(newimg);
 };
 
- $(document).ready(function(){
 
-   const firstname = document.getElementById("firstname");
-   const lastname = document.getElementById("lastname");
-   const email = document.getElementById("email");
-   const password = document.getElementById("password");
-   const repeatPassword = document.getElementById("repeat_password");
-   const errorElement = document.getElementById("firstname-error");
-   const errorLastname = document.getElementById("lastname-error");
+$(document).ready(function(){
 
-   const form = document.getElementById("signup");
+  const firstname = document.getElementById("firstname");
+  const lastname = document.getElementById("lastname");
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+  const repeatPassword = document.getElementById("repeat_password");
+  const errorElement = document.getElementById("firstname-error");
+  const errorLastname = document.getElementById("lastname-error");
 
-   form.addEventListener("submit", (e) => {
-     // e.preventDefault();
-     validateFirstname();
-     validateLastname()
-   });
+  const form = document.getElementById("signup");
 
-   form.addEventListener("submit", (e) => {
-    // e.preventDefault();
-    validateFirstname();
-    validateLastname();
+  if(form){
+    form.addEventListener("submit", (e) => {
+      // e.preventDefault();
+      validateFirstname();
+      validateLastname()
+    });
+
+  }
+
+
 
 
   function validateFirstname(){
@@ -76,8 +83,8 @@ function getImage(event)
       errorElement.innerText = 'Firstname is required and can`t be js';
     }
 
-   };
-   function validateLastname(){
+  };
+  function validateLastname(){
     let msg = [];
     if (lastname.value === "" || lastname.value === null) {
       msg.push("Firstname is required and can`t be ");
@@ -86,8 +93,7 @@ function getImage(event)
       errorLastname.innerText = 'Lastname is required and can`t be js';
     }
 
-   };
-});
+  };
 $('#email').blur(function(){
   var email = $(this).val();
   if(email == ""){
@@ -106,9 +112,23 @@ $('#email').blur(function(){
         }
       });
     }
+
 });
 
+$(document).on('keyup','#search',function(){
+  var search = $(this).val();
+  $.ajax({
+    url:"../actions/search.php",
+    method: "GET",
+    data:{
+      search:search
+    },
+    success: function(data){
+      $('.projects-container').html(data);
+    }
+  });
 
+});
 
 
 });

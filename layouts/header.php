@@ -3,8 +3,14 @@ session_start();
 ini_set("error_reporting",E_ALL);
 ini_set("display_errors",1);
 include dirname(__DIR__) . "/config/constants.php";
+include dirname(__DIR__) . "/config/functions.php";
+
 
 $userId = @$_SESSION["USER_ID"];
+$user = selectOne('users',['status'=>'new','id' => $userId]);
+$project = selectOne('projects',['status'=>'active','user_id' => $userId]);
+
+
 ?>
 
 <!doctype html>
@@ -27,7 +33,9 @@ $userId = @$_SESSION["USER_ID"];
 <body>
     <main>
         <nav class="navbar d-flex justify-content-center">
+
             <ul>
+
                 <li><a href="../index.php" class="active">Home </a></li>
                    <?php if (!$userId) { ?>
                 <li><a href="<?php echo BASE_URL; ?>pages/projects.php">Projects</a></li>
@@ -44,5 +52,9 @@ $userId = @$_SESSION["USER_ID"];
                 <?php } ?>
 
             </ul>
+            <img src="<?php echo BASE_URL; ?>uploads/<?php echo $user['avatar'];?>" style="width:77px; border-radius: 50%"/>
+            <?php echo $user['firstname'] ?>
+            <p><a href="<?php echo BASE_URL; ?>/actions/logout.php">Logout</a></p>
+
         </nav>
         <div class="content">

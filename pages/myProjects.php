@@ -1,15 +1,15 @@
 <?php include "../layouts/header.php"; 
-include "../config/functions.php";
 $pageSize = 3;
-$projects = paginate('projects',['status'=>'active','user_id' => $userId],'*',$pageSize);
-$allProjects = select('projects',['status'=>'active','user_id' => $userId],'*');
-$avatar = selectOne('users',['status'=>'new','id' => $userId], '*');
-$totalPages = ceil(count($allProjects)/$pageSize);
+$projects = paginate('projects',['status'=>'active','user_id' => $userId],$pageSize);
+$project = selectOne('projects',['status'=>'active','user_id' => $userId]);
+//$avatar = selectOne('users',['status'=>'new','id' => $userId], 'avatar');
+$totalPages = ceil(count($project)/$pageSize);
 ?>
 
 <section class="projects sec-width" id="projects">
     <div class="title">
         <h2>projects</h2>
+        <input type="search" name="search" id="search" />
     </div>
     <div>
         <div>
@@ -18,8 +18,6 @@ $totalPages = ceil(count($allProjects)/$pageSize);
                 <p style="float:right;" class="logaout"><a href="../actions/logout.php">Logout</a></p>
             <?php } ?>
         </div>
-
-
     </div>
     <div class="projects-container">
     <?php foreach($projects as $project){ ?>
@@ -30,16 +28,12 @@ $totalPages = ceil(count($allProjects)/$pageSize);
                 </div>
                 <div class="project-text">
                     <h3 class="d-flex">Projects
-                          <?php if ($userId)  { ?>
-                    <img src="<?php echo BASE_URL; ?>uploads/<?php echo $avatar['avatar'];?>" style="width:15%; border-radius: 50%"/>
-                          <?php } ?></h3>
+                        </h3>
                     <p><?php echo $project['title'];?></p>
                     <b> Skills:<?php echo $project['description'];?></b>
                 </div>
-                
                      <a class="btnCreateProject" href="<?php echo BASE_URL; ?>pages/updateProject.php?id=<?=$project['id']?>">Update Project</a>
                      <a class="btnCreateProject" href="<?php echo BASE_URL; ?>actions/deleteProjectAction.php?id=<?=$project['id']?>"   onclick="return checkDelete()">Delete Project</a>
-
         </article>
 
         <?php } ?>

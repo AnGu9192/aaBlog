@@ -1,5 +1,5 @@
 <?php
-include "../config/connection.php";
+include dirname(__DIR__) . "/config/connection.php";
 
 function selectOne($table, $conditions = [], $what = '*'){
 
@@ -21,7 +21,6 @@ function selectOne($table, $conditions = [], $what = '*'){
 }
 
 function select($table, $conditions = [], $what = '*'){
-
     $whereArr = [];
     $data = [];
     foreach ($conditions as $field => $value){
@@ -81,7 +80,7 @@ function upload(){
 } 
 
 
-function paginate($table, $conditions,$what = '*', $count){
+function paginate($table, $conditions,$count=20,$what = '*',){
     $whereArr = [];
     $data = [];
 

@@ -1,14 +1,9 @@
 <?php include "../layouts/header.php"; 
-include "../config/functions.php";
 $pageSize = 3;
-$projects = paginate('projects',['status'=>'active'],'*', $pageSize);
-$allProjects = selectOne('projects',['status'=>'active','user_id' => $userId],'*');
-if (!$userId){
-    $allProjects = select('projects',['status'=>'active'],'*');
-}
+$projects = paginate('projects',['status'=>'active'],$pageSize);
+$project = selectOne('projects',['status'=>'active','user_id' => $userId]);
 
-$avatarimg = selectOne('users',['status'=>'new','id' => $userId], '*');
-$totalPages = ceil(count($allProjects)/$pageSize);
+$totalPages = ceil(count($project)/$pageSize);
 ?>
 
 
@@ -21,18 +16,17 @@ $totalPages = ceil(count($allProjects)/$pageSize);
 
     </div>
     <div class="projects-container">
-    <?php foreach($projects as $project){ ?>
-        <article class="project">
 
+    <?php foreach($projects as $project){
+    $avatar = selectOne('users',['status'=>'new','id' => $project['user_id']], 'avatar');
+    ?>
+        <article class="project">
                 <div class="project-image">
           <a href="<?php echo BASE_URL; ?>pages/projectImage.php?id=<?php echo $project['image'];?>"> <img src="<?php echo BASE_URL; ?>uploads/<?php echo $project['image'];?>" name="image" id="image"/></a>
                 </div>
                 <div class="project-text">
                     <h3 class="d-flex">Project
-                             <?php if (!$userId)  { ?>
-                    <img src="<?php echo BASE_URL; ?>uploads/<?php echo $avatarimg['avatar'];?>" style="width:15%; border-radius: 50%"/>
-                          <?php } ?>
-
+                        <img src="<?php echo BASE_URL; ?>uploads/<?php echo $avatar['avatar'];?>" style="width:12%; border-radius: 50%"/>
                     </h3>
                     <p><?php echo $project['title'];?></p>
                     <b> Skills:<?php echo $project['description'];?></b>

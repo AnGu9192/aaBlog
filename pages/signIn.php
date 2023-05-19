@@ -1,6 +1,5 @@
 <?php
 include "../layouts/header.php";
-include "../config/connection.php";
 
 ?>
   <div class="container">
@@ -8,7 +7,7 @@ include "../config/connection.php";
         <form action="<?php echo BASE_URL; ?>actions/signInAction.php" method="post" autocomplete="off">
         <div class='sign_page'>
             <h2 class='signin active'>SignIn</h2>
-            <h5 class="dont_acount">Don't have an account?<a href="../pages/signUp.php">Sign Up</a></h5>
+            <h5 class="dont_account">Don't have an account?<a href="../pages/signUp.php">Sign Up</a></h5>
             </div>
 
             <div class="inputBox">
@@ -21,9 +20,7 @@ include "../config/connection.php";
                 <input type="password" name="password" value="<?= isset($_SESSION["old"]["password"])?$_SESSION["old"]["password"]:'' ?>">
                 <span>Password</span>
                 <p class="error"><?= isset($_SESSION["errors"]["password"])?$_SESSION["errors"]["password"]:'' ?></p>
-
             </div>
-    
 
             <div class="inputBox">
                <input type="submit" value="Log in" name="submit">

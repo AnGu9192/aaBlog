@@ -5,6 +5,7 @@ function selectOne($table, $conditions = [], $what = '*'){
 
     $whereArr = [];
     $data = [];
+
     foreach ($conditions as $field => $value){
         $whereArr[] = $field . "='".$value."'";
     }
@@ -16,8 +17,6 @@ function selectOne($table, $conditions = [], $what = '*'){
     $row = mysqli_fetch_assoc($result);
 
     return $row;
-
-
 }
 
 function select($table, $conditions = [], $what = '*'){
@@ -32,6 +31,7 @@ function select($table, $conditions = [], $what = '*'){
     $sql = "SELECT $what FROM $table WHERE $whereStr";
 
     $result = query($sql);
+
     while ($row = mysqli_fetch_assoc($result))
     {
         $data[] = $row;
@@ -80,7 +80,7 @@ function upload(){
 } 
 
 
-function paginate($table, $conditions,$count=20,$what = '*',){
+function paginate($table, $conditions,$count=20,$what = '*'){
     $whereArr = [];
     $data = [];
 
@@ -108,4 +108,7 @@ function query($sql){
     global $connection;
     return mysqli_query($connection, $sql);
 }
+
+
+
 

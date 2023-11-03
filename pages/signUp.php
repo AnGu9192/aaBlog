@@ -8,7 +8,6 @@ include "../layouts/header.php"; ?>
             <h2 class="signup">Sign Up</h2>
             <h2 class='signIn' ><a href="./signIn.php">SignIn</a></h2>
             </div>
-           
             <div class="inputBox">
                 <input type="text" name="firstname" id="firstname" value="<?= isset($_SESSION["old"]["firstname"])?$_SESSION["old"]["firstname"]:'' ?>">
                 <span>First Name *</span>
@@ -35,7 +34,6 @@ include "../layouts/header.php"; ?>
             </div>
             <div class="inputBox">
                 <input type="password" name="repeat_password" id="repeat_password" class="password-container" value="<?= isset($_SESSION["old"]["repeat_password"])?$_SESSION["old"]["repeat_password"]:'' ?>">
-                <i class="fa fa-eye" id="repeat-eye"></i> 
                 <span>Repeat password*</span>
                 <p class="error"><?= isset($_SESSION["errors"]["repeat_password"])?$_SESSION["errors"]["repeat_password"]:'' ?></p>
 
@@ -59,9 +57,7 @@ include "../layouts/header.php"; ?>
             <div class="inputBox">
                 <input type="submit" value="Send" name="submit">
             </div>
-           
         </form>
-
     </div>
 
   </div>

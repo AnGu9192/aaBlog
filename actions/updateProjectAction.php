@@ -43,7 +43,6 @@ if (isset($_POST['submit'])) {
         }
     }
 
- 
 
 
     $projectUpdated = update('projects',$data,$id);

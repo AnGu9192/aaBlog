@@ -9,8 +9,6 @@ include dirname(__DIR__) . "/config/functions.php";
 $userId = @$_SESSION["USER_ID"];
 $user = selectOne('users',['status'=>'new','id' => $userId]);
 $project = selectOne('projects',['status'=>'active','user_id' => $userId]);
-
-
 ?>
 
 <!doctype html>

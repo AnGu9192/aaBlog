@@ -1,6 +1,6 @@
 <?php
 
-include "../layouts/header.php"; 
+//include "../layouts/header.php";
 include "../config/functions.php";
 
 
@@ -12,7 +12,7 @@ if (!$userId) {
     die;
 }
 
-
+var_dump($userId);
 
  $sql = delete('users', $userId );
 

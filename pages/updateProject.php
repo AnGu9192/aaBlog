@@ -2,12 +2,10 @@
 
 <?php
 include "../layouts/header.php";
-include "../config/functions.php";
 
 $projectId = $_GET['id'];
 $project = selectOne('projects',['id'=> $projectId]);
 
-//var_dump($project );
 
 ?>
 
@@ -23,7 +21,7 @@ $project = selectOne('projects',['id'=> $projectId]);
                                onchange="getImage(event)"></i>
                <input type="file" name="image" id="image" class="hide" id="upload" onchange="getImage(event)">
             <div id="display-image"></div>
-            <div id="uploadImageProect"></div>
+            <div id="uploadImageProject"></div>
               </label>
              <input name="id" id="id" type="hidden" value="<?= $project['id'] ?>">
             </div>

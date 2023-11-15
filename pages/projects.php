@@ -1,4 +1,7 @@
-<?php include "../layouts/header.php"; 
+<?php include "../layouts/header.php";
+
+$userId = $_SESSION["USER_ID"];
+
 $pageSize = 3;
 $projects = paginate('projects',['status'=>'active'],$pageSize);
 $project = selectOne('projects',['status'=>'active','user_id' => $userId]);
@@ -10,6 +13,8 @@ $totalPages = ceil(count($project)/$pageSize);
 <section class="projects sec-width" id="projects">
     <div class="title">
         <h2>projects</h2>
+         <input type="search" name="search" id="search" />
+
     </div>
 
     <div>

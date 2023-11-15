@@ -1,21 +1,20 @@
-<?php include "../layouts/header.php"; 
+<?php global $userId;
+include "../layouts/header.php";
 $pageSize = 3;
 $projects = paginate('projects',['status'=>'active','user_id' => $userId],$pageSize);
 $project = selectOne('projects',['status'=>'active','user_id' => $userId]);
-//$avatar = selectOne('users',['status'=>'new','id' => $userId], 'avatar');
 $totalPages = ceil(count($project)/$pageSize);
 ?>
 
 <section class="projects sec-width" id="projects">
     <div class="title">
         <h2>projects</h2>
-        <input type="search" name="search" id="search" />
     </div>
     <div>
         <div>
             <?php if ($userId) { ?>
                 <a class="btnCreateProject" href="<?php echo BASE_URL; ?>pages/insertProject.php">Create Project</a>
-                <p style="float:right;" class="logaout"><a href="../actions/logout.php">Logout</a></p>
+                <p style="float:right;" class="logout"><a href="../actions/logout.php">Logout</a></p>
             <?php } ?>
         </div>
     </div>

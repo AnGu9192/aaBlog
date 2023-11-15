@@ -1,6 +1,5 @@
 <?php
 include "../layouts/header.php";
-include dirname(__DIR__) . "/config/connection.php";
 
 $userId = $_SESSION["USER_ID"];
 if (!$userId) {

@@ -1,7 +1,7 @@
 <?php
 
-include "../layouts/header.php"; 
-include "../config/functions.php";
+include "../layouts/header.php";
+//include "../config/functions.php";
 
 
 global $connection;
@@ -13,6 +13,7 @@ if (!$projectId) {
 }
 
 $sql = delete('projects', $projectId);
+
 
 
 header("Location: ../pages/myprojects.php");die; 

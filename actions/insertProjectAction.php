@@ -59,7 +59,7 @@ if ($uploadOk == 0) {
 
     if($projectInserted){
       //Remove old image file
-      header("Location: ../pages/projects.php");die; 
+      header("Location: ../pages/myprojects.php");die; 
     }     
       
   } else {

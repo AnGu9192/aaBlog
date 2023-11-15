@@ -5,6 +5,7 @@ ini_set("display_errors", 1);
 include "../config/functions.php";
 
 
+
 $target_dir = "../uploads/";
 $filename = uniqid() . '_' . basename($_FILES["image"]["name"]);
 $target_file = $target_dir . $filename;

@@ -8,7 +8,6 @@ include "../layouts/header.php"; ?>
             <h2 class="signup">Sign Up</h2>
             <h2 class='signIn' ><a href="./signIn.php">SignIn</a></h2>
             </div>
-           
             <div class="inputBox">
                 <input type="text" name="firstname" id="firstname" value="<?= isset($_SESSION["old"]["firstname"])?$_SESSION["old"]["firstname"]:'' ?>">
                 <span>First Name *</span>
@@ -17,13 +16,13 @@ include "../layouts/header.php"; ?>
             <div class="inputBox">
                 <input type="text" name="lastname" id="lastname" value="<?= isset($_SESSION["old"]["lastname"])?$_SESSION["old"]["lastname"]:'' ?>">
                 <span>Last Name *</span>
-                <p class="error"><?= isset($_SESSION["errors"]["lastname"])?$_SESSION["errors"]["lastname"]:'' ?></p>
+                <p class="error" id="lastname-error"><?= isset($_SESSION["errors"]["lastname"])?$_SESSION["errors"]["lastname"]:'' ?></p>
 
             </div>
             <div class="inputBox">
-                <input type="text" name="email" id="email"  value="<?= isset($_SESSION["old"]["email"])?$_SESSION["old"]["email"]:'' ?>">
+                <input type="email" name="email" id="email"  value="<?= isset($_SESSION["old"]["email"])?$_SESSION["old"]["email"]:'' ?>" >
                 <span>Email *</span>
-                <p class="error"><?= isset($_SESSION["errors"]["email"])?$_SESSION["errors"]["email"]:'' ?></p>
+                <p class="error" id="email-error"><?= isset($_SESSION["errors"]["email"])?$_SESSION["errors"]["email"]:''  ?></p>
 
             </div>
             <div class="inputBox">
@@ -34,9 +33,7 @@ include "../layouts/header.php"; ?>
 
             </div>
             <div class="inputBox">
-                <input type="password" name="repeat_password" id="repeat_password" class="password-container" value="<?= isset($_SESSION["old"]["password"])?$_SESSION["old"]["password"]:'' ?>">
-                <i class="fa fa-eye" id="repeat-eye"></i> 
-
+                <input type="password" name="repeat_password" id="repeat_password" class="password-container" value="<?= isset($_SESSION["old"]["repeat_password"])?$_SESSION["old"]["repeat_password"]:'' ?>">
                 <span>Repeat password*</span>
                 <p class="error"><?= isset($_SESSION["errors"]["repeat_password"])?$_SESSION["errors"]["repeat_password"]:'' ?></p>
 
@@ -44,7 +41,7 @@ include "../layouts/header.php"; ?>
             <div class="inputBox">
                     <input id="date" type="date" name="birthday" id="birthday" value="<?= isset($_SESSION["old"]["birthday"])?$_SESSION["old"]["birthday"]:'' ?>">
                     <span>Birthday*</span>
-                    <p class="error"><?= isset($_SESSION["errors"]["birthday"])?$_SESSION["errors"]["birthday"]:'' ?></p>
+                    <p class="error" id="birthday-error"><?= isset($_SESSION["errors"]["birthday"])?$_SESSION["errors"]["birthday"]:'' ?></p>
                 
                 </div>
             <div class="radio__contant" id="gen" value="<?= isset($_SESSION["old"]["gender"])?$_SESSION["old"]["gender"]:'' ?>">
@@ -60,9 +57,7 @@ include "../layouts/header.php"; ?>
             <div class="inputBox">
                 <input type="submit" value="Send" name="submit">
             </div>
-           
         </form>
-
     </div>
 
   </div>

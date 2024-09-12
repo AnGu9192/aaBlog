@@ -32,10 +32,17 @@ a{
     padding: 30px;
     font-size: 30px;
 }
-li{
+.navbar li{
     text-decoration: none;
     color: white;
 
+}
+.navbar ul li a{
+    color: white;
+    text-decoration: none;
+}
+.navbar ul li a:hover{
+    color:#375e63;
 }
 .btnLogin-popup{
     widows: 130px;
@@ -60,12 +67,7 @@ li{
     color:#375e63;
 
 }
-li a{
-    color: white;
-}
- a:hover{
-    color:#375e63;
-}
+
 .active{
     color:whitesmoke;
 }
@@ -81,7 +83,7 @@ li a{
     
 }
 .contactForm{
-    width: 40%;
+    width: 42%;
     padding: 30px;
     background:transparent;
     border: 2px solid rgba(255, 255, 255, .5);
@@ -104,10 +106,16 @@ li a{
     color: black;
     font-weight: 500;
 }
-.dont_acount{
+.dont_account{
     margin-top: 10px;
 }
+.dont_account a{
+    text-decoration: none;
+}
+.signIn a{
+    text-decoration: none;
 
+}
 .contactForm .inputBox{
     position: relative;
     width: 100%;
@@ -115,7 +123,7 @@ li a{
 }
 .contactForm .inputBox input{
     width: 100%;
-    padding: 5px 0;
+    padding: 5px;
     font-size: 16px;
     margin: 10px 0;
     border: none;
@@ -170,12 +178,65 @@ li a{
     background: #4d7d94;
 }
 .radio__contant {
-    display: flex;
-    gap: 4px;
+/*     display: flex;
+ */    gap: 4px;
     margin-top: 10px;
 }
 .radio__contant p,label{
   color: white;
+}
+
+.hide{
+    display: none;
+}
+
+
+#preview img{
+    border-radius: 50%;
+    border:8px solid #DCDCDC;
+    width: 125px;
+    height: 125px;
+    margin:0 25%;
+}
+.upload_submit input[type=submit]{
+    border: none;
+    outline: none;
+    height: 20px;
+    width: 60px;
+    background-color: aliceblue;
+    margin-left: 35px;
+    border-radius: 5px;
+}
+.edit_profile{
+    background-color: aliceblue;
+    padding: 2px;
+    text-align: center;
+    margin-left: 25px;
+    border-radius: 5px;
+
+} 
+.actions a{
+    text-decoration: none;
+
+}
+.insert{
+    margin-top: 15px;
+
+}
+.insert_data{
+    background-color: aliceblue;
+    padding: 2px;
+    text-align: center;
+    margin-left: 25px;
+    border-radius: 5px;
+}
+
+.actions{
+    display: flex;
+}
+
+.project_description{
+    padding: 6px;
 }
  .copyright{
     display: flex;
@@ -253,33 +314,3 @@ li a{
     }
 
 }
-
-.hide{
-    display: none;
-}
-
-
-#preview img{
-    border-radius: 50%;
-    border:8px solid #DCDCDC;
-    width: 125px;
-    height: 125px;
-}
-.upload_submit input[type=submit]{
-    border: none;
-    outline: none;
-    height: 20px;
-    width: 60px;
-    background-color: aliceblue;
-    margin-left: 35px;
-    border-radius: 5px;
-}
-.edit_profile{
-    background-color: aliceblue;
-    padding: 2px;
-    text-align: center;
-    margin-left: 25px;
-    border-radius: 5px;
-
-
-} 

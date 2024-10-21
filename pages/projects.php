@@ -1,14 +1,13 @@
 <?php include "../layouts/header.php";
 
-$userId = $_SESSION["USER_ID"];
+//$userId = $_SESSION["USER_ID"];
 
 $pageSize = 3;
 $projects = paginate('projects',['status'=>'active'],$pageSize);
-$project = selectOne('projects',['status'=>'active','user_id' => $userId]);
+$project = selectOne('projects',['status'=>'active']);
 
 $totalPages = ceil(count($project)/$pageSize);
 ?>
-
 
 <section class="projects sec-width" id="projects">
     <div class="title">

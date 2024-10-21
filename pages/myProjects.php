@@ -3,7 +3,10 @@ include "../layouts/header.php";
 $pageSize = 3;
 $projects = paginate('projects',['status'=>'active','user_id' => $userId],$pageSize);
 $project = selectOne('projects',['status'=>'active','user_id' => $userId]);
-$totalPages = ceil(count($project)/$pageSize);
+if ($userId) {
+    $totalPages = ceil(count($project)/$pageSize);
+}
+
 ?>
 
 <section class="projects sec-width" id="projects">

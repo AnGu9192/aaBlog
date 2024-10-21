@@ -50,8 +50,12 @@ $project = selectOne('projects',['status'=>'active','user_id' => $userId]);
                 <?php } ?>
 
             </ul>
+            <?php if ($userId) { ?>
+
             <img src="<?php echo BASE_URL; ?>uploads/<?php echo $user['avatar'];?>" style="width:77px; border-radius: 50%"/>
             <?php echo $user['firstname'] ?>
+            <?php } ?>
+
             <p><a href="<?php echo BASE_URL; ?>/actions/logout.php">Logout</a></p>
 
         </nav>

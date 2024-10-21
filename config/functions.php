@@ -76,7 +76,6 @@ function delete($table, $id){
 
 function upload(){
 //Todo
- 
 } 
 
 
